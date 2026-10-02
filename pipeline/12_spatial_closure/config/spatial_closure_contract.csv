@@ -1,0 +1,24 @@
+field,value,status
+application_id,food_deserts_hfa_england_lsoa21,VERIFIED
+stage,targeted_spatial_closure,ACTIVATED
+scientific_question,"Are the accepted Healthy Food Access configurations reducible to geographic proximity or conventional spatial concentration?",FIXED
+population,33755 English LSOA21s,FROZEN
+stable_id,lsoa21cd,FROZEN
+approved_radius,1.50,FROZEN
+topology_fingerprint_sha256,23d060eb8c4518192d55066752ca23a7d42caf0da43657eddfb3aca41b360051,FROZEN
+canonical_topology_modification,FALSE,LOCKED
+geography_vintage,LSOA21,REQUIRED
+working_crs,EPSG:27700,FIXED
+representative_point_rule,st_point_on_surface after transformation to EPSG:27700,FIXED
+adjacency_rule,Queen contiguity via sf::st_touches,FIXED
+geographic_distance_rule,Euclidean BNG distance between representative points,FIXED
+topological_distance_rule,Euclidean distance in z-scored accepted three-axis space,FIXED
+knn_k_values,10;25;50,FIXED
+pair_sample_size,500000,FIXED
+pair_sample_seed,20260925,FIXED
+moran_weights,row-standardised Queen adjacency,FIXED
+moran_inference,DESCRIPTIVE_ONLY,FIXED
+spatial_regression,NOT_ACTIVATED_NO_OUTCOME_ESTIMAND,BOUNDED
+spatial_hac,NOT_ACTIVATED_NO_REGRESSION_ESTIMAND,BOUNDED
+spatial_randomisation,NOT_ACTIVATED_CURRENT_DESCRIPTIVE_CLAIM,BOUNDED
+final_analytical_freeze,AFTERRUN_HUMAN_REVIEW,PENDING

@@ -1,0 +1,23 @@
+# Public release checklist
+
+- [x] Clean source-to-paper replication completed.
+- [x] Frozen analytical input hash reproduced.
+- [x] Canonical Ball Mapper topology fingerprint reproduced.
+- [x] 1,000-repetition robustness reproduced.
+- [x] Spatial closure reproduced.
+- [x] Scalarisation robustness reproduced.
+- [x] Machine-readable supplementary files generated.
+- [x] Raw/provider data excluded from repository.
+- [x] `N_WORKERS` exposed.
+- [x] `N_REPS` exposed; canonical default remains 1,000.
+- [x] Reduced-repetition mode labelled noncanonical.
+- [x] Five-author manuscript/repository metadata confirmed.
+- [x] All authors use School of Social Sciences, University of Manchester.
+- [x] Simon Rudkin identified as corresponding author.
+- [x] MIT software licence added with manuscript scope explicitly excluded.
+- [ ] Create public GitHub repository.
+- [ ] Add GitHub repository URL to README/CITATION metadata.
+- [ ] Create immutable `v1.0.0` release.
+- [ ] Archive the release and add DOI if desired.
+- [ ] Add SSRN URL/identifier once assigned.
+- [ ] Add journal article DOI after publication.

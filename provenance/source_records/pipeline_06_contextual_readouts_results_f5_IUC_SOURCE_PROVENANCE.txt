@@ -1,0 +1,16 @@
+IUC SOURCE PROVENANCE NOTE
+
+Primary canonical source:
+GeoDS Internet User Classification 2018.
+
+Classification acquisition method in this run: public_GLA_LOTI_ArcGIS_mirror
+Classification source URL in this run: https://gis.london.gov.uk/arcgis/rest/services/apps/LOTI_Digital_Exclusion_open_2023/MapServer/33
+
+If the GLA LOTI ArcGIS mirror is used, F5 accepts it only after validating:
+- 41,729 unique GB LSOA/Data Zone identifiers;
+- 32,844 England LSOA11 identifiers;
+- exactly 10 IUC groups;
+- non-missing group labels.
+
+The mirror is used for the categorical classification only.
+The optional cluster-centre resource remains GeoDS/manual-input only.

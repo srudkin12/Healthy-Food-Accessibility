@@ -1,0 +1,6 @@
+audit_id,student_claim_or_output,publication_audit_requirement,status
+STU01,"Analysis restricted to approximately 3,814 LSOAs with a qualifying large supermarket","Reconstruct only for provenance; publication population must begin from all 33,755 English LSOA21s",OPEN
+STU02,"Summary table reports shop_count minimum 0 and mean 0.17 despite served-only restriction","Determine which intermediate/full-sample object generated summary statistics",OPEN
+STU03,"Public-transport and car journey-time summary statistics are identical","Independently retrieve JTS0507 and verify mode-specific columns; presume coding/column error until disproved",OPEN
+STU04,"IUC coded 1=Creators to 10=Withdrawn and entered as a numeric axis","Do not carry ordinal/interval interpretation forward without validation",OPEN
+STU05,"shop_count omission expands sample to >30,000 and is described as robustness of original sample","Treat as a different population/specification, not validation of served-only sampling",OPEN

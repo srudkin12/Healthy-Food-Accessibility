@@ -1,0 +1,17 @@
+field,value,status
+application_id,food_deserts_hfa_england_lsoa21,VERIFIED
+stage,P1.4-D,VERIFIED
+approved_radius,1.50,FROZEN
+topology_fingerprint_sha256,23d060eb8c4518192d55066752ca23a7d42caf0da43657eddfb3aca41b360051,FROZEN
+canonical_topology_reconstruction,FALSE,LOCKED
+canonical_layout_seed,20260807,FIXED
+local_colour_aggregation,equal_ball_mean,FRAMEWORK_DEFAULT
+nearby_radius_grid,1.40;1.45;1.50;1.55;1.60,PREDECLARED_SENSITIVITY
+robustness_repetitions,1000,PRODUCTION
+robustness_base_seed,20260807,FRAMEWORK_BASELINE
+default_workers,80,RUNTIME_ONLY
+jts2019_public_transport,EXCLUDED,FROZEN
+iuc_treatment,CATEGORICAL_ONLY,FROZEN
+student_served_only_filter,PROHIBITED,FROZEN
+automatic_radius_reselection,FALSE,LOCKED
+optimality_claim,NONE,LOCKED

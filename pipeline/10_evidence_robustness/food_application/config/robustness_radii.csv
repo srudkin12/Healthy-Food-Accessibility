@@ -1,0 +1,6 @@
+radius,is_approved_radius,role
+1.40,FALSE,nearby_sensitivity
+1.45,FALSE,nearby_sensitivity
+1.50,TRUE,approved
+1.55,FALSE,nearby_sensitivity
+1.60,FALSE,nearby_sensitivity

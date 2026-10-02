@@ -1,0 +1,12 @@
+category,decision,rationale
+real application directories,removed,"clean baseline must not carry any application data, labels, outputs or adapters"
+application audit and handover ZIPs,removed,"historical evidence belongs in external archives, not runtime baseline"
+older extracted framework releases,removed,latest accepted generic source retained once
+older framework ZIPs and setup scripts,removed,avoid release ambiguity and duplicated code
+development logs/local_runs/acceptance folders,removed,machine/run history is not portable source
+provenance/canonical_original snapshots,removed,duplicated old source; file-level source lineage retained instead
+application-specific framework/R/TDABMPaperIntegrity.R,removed,hard-coded application paths violate clean application-neutral boundary
+legacy compatible core field names,retained,working generic API not refactored during cleanup
+current generic R/C++ analytical modules,retained,required reusable pipeline machinery
+generic synthetic contract tests,retained,portable self-test on new machines
+generic outbound application handover request,added,"standard file for requesting verified application data, contracts and evidence"

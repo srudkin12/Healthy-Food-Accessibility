@@ -1,0 +1,14 @@
+field,value,note
+axis_low_threshold,-0.50,Descriptive standardized-difference threshold only
+axis_high_threshold,0.50,Descriptive standardized-difference threshold only
+axis_very_low_threshold,-1.00,Descriptive standardized-difference threshold only
+axis_very_high_threshold,1.00,Descriptive standardized-difference threshold only
+similar_scalar_gap_max,0.25,Pairwise screening threshold; not a scientific class boundary
+composition_distance_min,1.00,Pairwise screening threshold in centred three-axis profile space
+contrast_shortlist_max,24,Maximum mechanically screened contrast pairs
+strong_order_spearman,0.90,Evidence flag threshold
+moderate_order_spearman,0.75,Evidence flag threshold
+strong_nearby_radius_spearman,0.95,Evidence flag threshold for repeated-mean nearby-radius patterns
+nominal_variables,ruc_category;iuc_category;kmeans_cluster,Always treated categorically
+bridge_language,PROHIBITED,Use overlap/multiple-neighbourhood language
+exclusive_typology_claim,PROHIBITED,24 balls are overlapping neighbourhoods not mutually exclusive classes

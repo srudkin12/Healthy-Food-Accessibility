@@ -1,0 +1,11 @@
+priority,rule,score
+1,Environment override FOOD_LSOA_GEOMETRY with optional FOOD_LSOA_LAYER,100000
+2,Exact 33755 canonical LSOA21 IDs required,50000
+3,Filename/path contains lsoa21,500
+4,Filename/path contains 2021,250
+5,Filename/path contains england,150
+6,Filename/path contains geography or boundary,100
+7,Filename/path contains canonical or staged,80
+8,Filename/path contains bgc,50
+9,Polygon or multipolygon geometry required,REQUIRED
+10,Highest predeclared score selected; ties resolved lexicographically and recorded,DETERMINISTIC

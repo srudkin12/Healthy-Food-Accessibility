@@ -1,0 +1,14 @@
+item,contract
+publication_population,33755 English LSOA21
+inheritance,F2A validated physical-access dataset only
+served_filter,none
+geolytix_reconstruction_source,Q1 2023 public Feature Service layer 7
+student_large_store_rule,exclude size band A under 280 square metres; include B C D
+representative_location,ONS LSOA21 population-weighted centroid
+distance_metric,British National Grid Euclidean metres
+functional_border_rule,nearest/catchment access may use stores outside England
+internal_count_rule,store point intersects English LSOA21 boundary
+catchment_thresholds_m,500;1000;2000;5000;10000
+distance_decay_scales_m,2000;5000
+JTS2019_public_transport,excluded per F2A source-conflict ledger
+TDABM,deferred

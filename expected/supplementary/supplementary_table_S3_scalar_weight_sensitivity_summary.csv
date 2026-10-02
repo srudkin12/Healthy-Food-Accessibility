@@ -1,0 +1,4 @@
+"subset","n_weight_schemes","min_weight_required","dist1_min","dist1_median","dist1_max","dist2_min","dist2_median","dist2_max","dist3_min","dist3_median","dist3_max"
+"all_nonnegative",231,0,19,35,99,10,22,64,4,12,28
+"each_weight_ge_010",120,0.1,26,36,72,13,23,40,6,12,21
+"each_weight_ge_020",45,0.2,28,36,45,17,23,29,7,14,19

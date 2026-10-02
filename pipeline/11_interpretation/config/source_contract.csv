@@ -1,0 +1,11 @@
+field,value,status
+source_handback,FoodDeserts_HFA_TDABM_P1_4D_Handback_20260925_021038.zip,ACCEPTED
+source_handback_sha256,e14c734fdf46a4436d08237d360d2bff42523a047f2de31dea3981e2f9badeff,FROZEN
+source_stage,P1.4-D,ACCEPTED
+source_status,PASS,REQUIRED
+approved_radius,1.50,FROZEN
+topology_fingerprint_sha256,23d060eb8c4518192d55066752ca23a7d42caf0da43657eddfb3aca41b360051,FROZEN
+expected_balls,24,REQUIRED
+expected_observations,33755,REQUIRED
+canonical_topology_mutation,FALSE,LOCKED
+final_analytical_freeze,AUTOMATICALLY_PROHIBITED,HUMAN_GATE

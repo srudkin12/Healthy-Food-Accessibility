@@ -1,0 +1,21 @@
+field,value
+application,food_deserts_hfa_england_lsoa21
+approved_radius,1.50
+decision_date,2026-09-20
+decision_maker,Researcher — explicit approval recorded in project decision register
+selection_basis,substantively_interpretable_fixed
+interpretation,Radius 1.50 defines a paper-facing configuration scale with a manageable Ball Mapper graph while retaining extensive overlapping LSOA membership and repeated-order cover stability.
+decision_rationale,"The researcher explicitly approved radius 1.50 after reviewing 915 radii with 1,000 random landmark orders per radius. The value is substantively rounded, lies inside the non-binding 40–60% dominance review band, and is close to the independent 50% majority-cover reference."
+topology_axes,physical_friction_log_nearest_large_store_km;transport_constraint_no_car_pct;material_constraint_income_deprivation_2025
+scaling,z_score
+metric,euclidean
+precision_policy,substantive_rounding
+pipeline_reference_radius,1.488932966510390
+pipeline_reference_method,Non-binding interpolated radius at which the median largest ball first covers 50% of observations.
+review_band_lower,1.202575946681110
+review_band_upper,1.809586058632880
+review_band_position,INSIDE_REVIEW_BAND
+diagnostic_audit_sha256,f6218edaecb6c58efe6bce0c9331ef7fd6af85de9dc4bbc68ff0eebaef4ce415
+automatic_selection_performed,FALSE
+optimality_claim,NONE
+notes,Approved radius is a human scientific decision. The pipeline reference and review band informed the decision but did not automatically select or constrain it.

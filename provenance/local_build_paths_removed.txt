@@ -1,0 +1,13 @@
+The public repository was constructed from the validated clean-room
+replication worktree.
+
+During internal development:
+- source data assembly and preparation occurred on a MacBook;
+- TDABM computation and final clean-room replication occurred on the Linux
+  analysis workstation.
+
+Machine-specific paths have been removed from public files.
+
+This operation changed only repository presentation and provenance text.
+It did not modify analytical inputs, code logic, topology contracts,
+robustness calculations, manuscript evidence, or expected outputs.

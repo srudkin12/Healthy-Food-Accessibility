@@ -1,0 +1,17 @@
+readout_id,role,required,expected_coverage,scientific_note
+physical_friction_log_nearest_large_store_km,topology_axis,TRUE,33755,Frozen topology axis; unscaled value shown as orientation/readout
+transport_constraint_no_car_pct,topology_axis,TRUE,33755,Frozen topology axis; unscaled value shown as orientation/readout
+material_constraint_income_deprivation_2025,topology_axis,TRUE,33755,Frozen topology axis; unscaled value shown as orientation/readout
+ruc_category,categorical_context,TRUE,33755,ONS 2021 Rural-Urban Classification; not a topology axis
+iuc_category,categorical_context,TRUE,31810,IUC 2018 group; categorical only; 1945 changed/complex LSOA21s unresolved
+tcm_shopping_walk,numeric_readout,TRUE,>=33000,DfT 2025 TCM shopping walking score
+tcm_shopping_cycle,numeric_readout,TRUE,>=33000,DfT 2025 TCM shopping cycling score
+tcm_shopping_public_transport,numeric_readout,TRUE,>=33000,DfT 2025 TCM shopping public-transport score; distinct from excluded JTS2019 field
+tcm_shopping_drive,numeric_readout,TRUE,>=33000,DfT 2025 TCM shopping driving score
+tcm_shopping_overall,numeric_readout,TRUE,>=33000,DfT 2025 TCM shopping overall score
+internal_qualifying_store_count,numeric_readout,TRUE,33755,F3 reconstructed >=280m2 internal-LSOA store count
+internal_qualifying_store_presence,binary_readout,DERIVED,33755,Derived as internal_qualifying_store_count > 0
+kmeans_cluster,categorical_diagnostic,TRUE,33755,F4 CH-selected k=3 diagnostic cluster; benchmark only
+resource_buffered_flag,binary_diagnostic,TRUE,33755,F4 kill-test flag; not a publication typology by default
+proximity_capability_constrained_flag,binary_diagnostic,TRUE,33755,F4 kill-test flag; not a publication typology by default
+compound_disadvantage_flag,binary_diagnostic,TRUE,33755,F4 kill-test flag; not a publication typology by default

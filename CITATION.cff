@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use these replication materials, please cite the associated paper and this repository release."
+title: "Replication materials for Beyond Severity: Ball Mapper Reveals Overlapping Configurations of Healthy Food Access in England"
+type: software
+authors:
+  - family-names: "Malachy"
+    given-names: "Barry"
+    affiliation: "School of Social Sciences, University of Manchester"
+  - family-names: "Massey"
+    given-names: "Tegan"
+    affiliation: "School of Social Sciences, University of Manchester"
+  - family-names: "Rudkin"
+    given-names: "Simon"
+    affiliation: "School of Social Sciences, University of Manchester"
+  - family-names: "Stratton-Killick"
+    given-names: "Frances"
+    affiliation: "School of Social Sciences, University of Manchester"
+  - family-names: "Surman"
+    given-names: "Martha"
+    affiliation: "School of Social Sciences, University of Manchester"
+version: "1.0.0"
+date-released: "2026-10-02"
+license: "MIT"

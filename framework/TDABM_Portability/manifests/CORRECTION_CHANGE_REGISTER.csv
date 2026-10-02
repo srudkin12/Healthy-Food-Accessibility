@@ -1,0 +1,6 @@
+issue,file,root_cause,correction,category
+A,framework/R/TDABMUserRadiusContract.R,binding review-band predicate,separate band validity from BELOW/INSIDE/ABOVE diagnostic position,BLOCKING_FIX
+B,framework/R/TDABMRadiusDiagnostics.R,diagnostic warnings included in approval-ready all-pass gate,separate blocking integrity_checks from non-blocking diagnostic_flags,BLOCKING_FIX
+4,tools/test_radius_policy_nonbinding_contract.R,missing semantic regression,add below/inside/above and warning/integrity tests,REGRESSION_PROTECTION
+C,setup_tdabm_clean.sh,could report PASS without R runtime,full mode fails without R; explicit static-only status added,BLOCKING_FIX
+D,tools/make_clean_release_zip.sh,manual release naming,derive official basename from VERSION and require full self-test,BLOCKING_FIX

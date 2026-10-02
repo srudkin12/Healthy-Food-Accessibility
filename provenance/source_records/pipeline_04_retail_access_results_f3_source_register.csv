@@ -1,0 +1,4 @@
+"source","url","role","rows","staged_at"
+"Geolytix Q1 2023 reconstruction Feature Service","https://services.arcgis.com/WQ9KVmV6xGGMnCiQ/ArcGIS/rest/services/Geolytix_Retail_Points_Q1_2023/FeatureServer/7","retail point reconstruction source",17947,"2026-10-01 16:55:55 BST"
+"ONS LSOA21 Population Weighted Centroids V4","https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA_PopCentroids_EW_2021_V4/FeatureServer/0","representative location for functional accessibility",33755,"2026-10-01 16:55:55 BST"
+"ONS LSOA21 BGC V5 boundaries","https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0","internal-LSOA store assignment",33755,"2026-10-01 16:55:55 BST"

@@ -1,0 +1,24 @@
+field,value,status
+application_id,food_deserts_hfa_england_lsoa21,VERIFIED
+application_purpose,Healthy Food Access TDABM configuration analysis,VERIFIED
+unit_of_analysis,English LSOA21,VERIFIED
+population,33755 English LSOA21s,VERIFIED
+project_root,<PROJECT_ROOT>,VERIFIED
+preferred_parent_f6b,pipeline/06_contextual_readouts,VERIFIED
+preferred_parent_f5,pipeline/06_contextual_readouts,VERIFIED
+stable_id,lsoa21cd,VERIFIED
+reader_label,lsoa21nm if present otherwise omitted,VERIFIED_RULE
+topology_axis_1,physical_friction_log_nearest_large_store_km,VERIFIED
+topology_axis_1_formula,log1p(geolytix_large_nearest_km),VERIFIED
+topology_axis_2,transport_constraint_no_car_pct,VERIFIED
+topology_axis_2_formula,car_none_pct,VERIFIED
+topology_axis_3,material_constraint_income_deprivation_2025,VERIFIED
+topology_axis_3_formula,income_deprivation_score_2025,VERIFIED
+scaling,z_score,VERIFIED
+metric,euclidean,VERIFIED
+complete_case_rule,all three topology-source variables finite and nonmissing,VERIFIED
+substantive_exclusions,NONE,VERIFIED
+colour_readouts,RUC;IUC;TCM;counts;clusters (not used in P1.4-A/B radius selection),HISTORICAL_PROJECT_CONTRACT
+radius_status,PENDING_USER_DECISION,LOCKED
+automatic_radius_selection,FALSE,LOCKED
+optimality_claim,NONE,LOCKED

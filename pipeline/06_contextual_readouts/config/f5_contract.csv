@@ -1,0 +1,10 @@
+item,contract
+population,33755 English LSOA21
+inheritance,F4 capability dataset plus F4 diagnostics
+primary_geometry,physical distance + no-car + income deprivation
+RUC_role,conditioning/readout not geometry axis
+IUC_role,categorical digital readout; never ordinal 1-10
+IUC_geography_transfer,strict one-to-one LSOA11-LSOA21 only
+IUC_continuous_propensity,optional only if uniquely identified in official cluster-centre resource
+online_delivery_availability,deferred external benchmark; not required to define capability geometry
+TDABM,deferred to F6

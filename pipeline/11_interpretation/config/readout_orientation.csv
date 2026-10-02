@@ -1,0 +1,14 @@
+variable,higher_value_interpretation,role
+physical_friction_log_nearest_large_store_km,greater physical friction,topology_axis
+transport_constraint_no_car_pct,greater transport constraint,topology_axis
+material_constraint_income_deprivation_2025,greater material constraint,topology_axis
+tcm_shopping_walk,higher shopping connectivity by walking,context_readout
+tcm_shopping_cycle,higher shopping connectivity by cycling,context_readout
+tcm_shopping_public_transport,higher shopping connectivity by public transport,context_readout
+tcm_shopping_drive,higher shopping connectivity by driving,context_readout
+tcm_shopping_overall,higher overall shopping connectivity,context_readout
+internal_qualifying_store_count,more qualifying stores within LSOA,retail_readout
+internal_qualifying_store_presence,higher share with at least one qualifying store,retail_readout
+resource_buffered_flag,higher share flagged resource-buffered,diagnostic_flag
+proximity_capability_constrained_flag,higher share flagged proximity-capability constrained,diagnostic_flag
+compound_disadvantage_flag,higher share flagged compound disadvantage,diagnostic_flag

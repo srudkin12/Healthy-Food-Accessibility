@@ -1,0 +1,26 @@
+stage,file,action
+01_source_reconstruction,VERSION.txt,historical sibling-stage name -> clean numbered stage
+02_physical_access,README.md,historical sibling-stage name -> clean numbered stage
+02_physical_access,scripts/01_inherit_f0f1.R,historical sibling-stage name -> clean numbered stage
+03_jts_validation,README.md,historical sibling-stage name -> clean numbered stage
+03_jts_validation,scripts/01_audit_jts2019.R,historical sibling-stage name -> clean numbered stage
+03_jts_validation,scripts/02_build_validated_f2.R,historical sibling-stage name -> clean numbered stage
+04_retail_access,README.md,historical sibling-stage name -> clean numbered stage
+04_retail_access,VERSION.txt,historical sibling-stage name -> clean numbered stage
+04_retail_access,scripts/01_inherit_f2a.R,historical sibling-stage name -> clean numbered stage
+05_mobility_material,VERSION.txt,historical sibling-stage name -> clean numbered stage
+05_mobility_material,scripts/01_inherit_f3.R,historical sibling-stage name -> clean numbered stage
+06_contextual_readouts,VERSION.txt,historical sibling-stage name -> clean numbered stage
+06_contextual_readouts,scripts/01_inherit_f4.R,historical sibling-stage name -> clean numbered stage
+07_input_freeze,README.md,historical project-stage path -> clean pipeline path
+07_input_freeze,food_application/config/application_contract.csv,historical project-stage path -> clean pipeline path
+07_input_freeze,food_application/R/FoodHFAAdapter.R,historical project-stage path -> clean pipeline path
+07_input_freeze,food_application/scripts/01_food_p1_4a_freeze.R,historical project-stage path -> clean pipeline path
+10_evidence_robustness,food_application/R/FoodP14DHelpers.R,historical project-stage path -> clean pipeline path
+05_mobility_material,run_hfa_f4.sh,historical handback side effect removed from public execution
+06_contextual_readouts,run_hfa_f5.sh,historical handback side effect removed from public execution
+09_canonical_topology,pipeline/09_canonical_topology/food_application/scripts/01_food_p1_4c_freeze.R,P1.4-C report-schema hotfix merged into canonical script; separate repair removed
+08_radius_diagnostics,pipeline/08_radius_diagnostics/food_application/scripts/02_food_p1_4b_aggregate.R,"Use accepted P1.4-B handback aggregator: expectation corrected from 100 to 1000 orderings/radius (91,500 -> 915,000 rows); dense radius calculations unchanged."
+14_manuscript_outputs,scripts/14_make_manuscript_outputs.R,Preserve matrix dimensions when clipping heatmap values; fixes pmax/pmin dimension drop without changing underlying evidence.
+15_verification,scripts/15_verify_replication.py,"Read manuscript-facing core_variable_robustness_evidence.csv from Stage 11 interpretation closure, where it is actually produced."
+runner,run_all.sh,Compound bash stages now use strict shell mode so an intermediate command failure cannot be masked by a later successful command; reusable framework runtime outputs are removed before static-clean checks.

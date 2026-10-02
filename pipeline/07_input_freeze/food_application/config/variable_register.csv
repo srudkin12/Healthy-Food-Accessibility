@@ -1,0 +1,10 @@
+variable,role,source_variable,formula,higher_value_interpretation,status
+lsoa21cd,stable_id,lsoa21cd,identity,LSOA identifier,VERIFIED
+physical_friction_log_nearest_large_store_km,topology,geolytix_large_nearest_km,log1p(geolytix_large_nearest_km),greater physical friction / poorer proximity,VERIFIED
+transport_constraint_no_car_pct,topology,car_none_pct,identity,greater household transport constraint,VERIFIED
+material_constraint_income_deprivation_2025,topology,income_deprivation_score_2025,identity,greater material disadvantage,VERIFIED
+RUC,readout/context,project source,not reconstructed in this stage,context only; cannot choose radius,HISTORICAL_PROJECT_CONTRACT
+IUC,readout/context,project source,not reconstructed in this stage,context only; cannot choose radius,HISTORICAL_PROJECT_CONTRACT
+TCM,readout/context,project source,not reconstructed in this stage,context only; cannot choose radius,HISTORICAL_PROJECT_CONTRACT
+counts,readout/context,project source,not reconstructed in this stage,context only; cannot choose radius,HISTORICAL_PROJECT_CONTRACT
+clusters,readout/context,project source,not reconstructed in this stage,context only; cannot choose radius,HISTORICAL_PROJECT_CONTRACT

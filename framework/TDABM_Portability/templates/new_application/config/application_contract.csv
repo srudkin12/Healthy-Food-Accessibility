@@ -1,0 +1,17 @@
+field,value,status
+application_id,REPLACE_ME,UNRESOLVED
+application_purpose,REPLACE_ME,UNRESOLVED
+source_data,REPLACE_ME,UNRESOLVED
+id_col,REPLACE_ME,UNRESOLVED
+label_col,REPLACE_ME,UNRESOLVED
+topology_variables,axis_1;axis_2,UNRESOLVED
+scaling,REPLACE_ME,UNRESOLVED
+metric,euclidean,UNRESOLVED
+complete_case_variables,REPLACE_ME,UNRESOLVED
+substantive_exclusions,NONE,PENDING_USER_CONFIRMATION
+colour_variables,REPLACE_ME,UNRESOLVED
+historical_radius,NA,HISTORICAL_REFERENCE_ONLY
+pipeline_reference_radius,NA,PENDING_P1_4_B
+user_approved_radius,NA,PENDING_USER_DECISION
+automatic_radius_selection,FALSE,LOCKED
+optimality_claim,NONE,LOCKED

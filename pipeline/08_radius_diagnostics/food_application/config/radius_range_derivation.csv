@@ -1,0 +1,9 @@
+quantity,value,rationale
+framework_raw_minimum_positive_pairwise_distance,0.0005640024400215105,Exact minimum positive Euclidean distance in the frozen z-standardised 3-axis topology.
+framework_raw_lower_anchor,0.00042300183001613286,"0.75 x minimum positive pairwise distance, following P1.4-B framework rule."
+framework_raw_maximum_pairwise_distance,9.146255586203534,Exact maximum Euclidean distance in the frozen z-standardised 3-axis topology.
+framework_raw_upper_anchor,9.14625559534979,"1.000000001 x maximum pairwise distance, following P1.4-B framework rule."
+requested_two_decimal_lower,0.01,Raw lower anchor rounds to 0.00; 0.01 is used because radius must be strictly positive and is the smallest positive two-decimal radius.
+requested_two_decimal_upper,9.15,Upper anchor rounds to 9.15.
+requested_step,0.01,User-requested fixed radius interval.
+radius_count,915.0,Inclusive grid from 0.01 to 9.15.

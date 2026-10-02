@@ -1,0 +1,19 @@
+field,value,status
+application_id,food_deserts_hfa_england_lsoa21,VERIFIED
+stage,P1.4-B,VERIFIED
+framework_version,1.1.2,VERIFIED
+radius_diagnostics_version,P1.4-B v1.1.3,VERIFIED
+radius_min,0.01,USER_REQUESTED_ROUNDED_GRID
+radius_max,9.15,USER_REQUESTED_ROUNDED_GRID
+radius_step,0.01,USER_REQUESTED
+radius_count,915,DERIVED
+random_orders_per_radius,1000,USER_REQUESTED
+common_order_schedule_across_radii,TRUE,LOCKED
+base_seed,20260807,FRAMEWORK_BASELINE
+default_workers,80,RUNTIME_ONLY
+cover_stability_scope,fixed_reproducible_256_LSOA_audit_sample,SCALABILITY_ADAPTATION
+landmark_stability_scope,full_33755_LSOAs,EXACT
+automatic_radius_approval,FALSE,LOCKED
+optimality_claim,NONE,LOCKED
+radius_decision,PENDING_USER_DECISION,LOCKED
+colour_variables_used_in_radius_selection,NONE,LOCKED

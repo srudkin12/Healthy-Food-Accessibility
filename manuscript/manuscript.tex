@@ -1,0 +1,258 @@
+% Copyright (c) 2026 Barry Malachy, Tegan Massey, Simon Rudkin, Frances Stratton-Killick, Martha Surman. Manuscript text not MIT-licensed.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{lineno}
+\onehalfspacing
+\linenumbers
+
+\title{Beyond Severity: Ball Mapper Reveals Overlapping Configurations of Healthy Food Access in England}
+\author{Barry Malachy, Tegan Massey, Simon Rudkin\thanks{Corresponding author.}, Frances Stratton-Killick, Martha Surman\\School of Social Sciences, University of Manchester}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Effective access to healthy food depends on more than proximity to retail outlets because mobility and material resources also shape whether opportunities can be used. Multidimensional measures nevertheless often compress these constraints into a single score or an exclusive area classification, potentially obscuring how disadvantage is constituted. We use Ball Mapper (BM) to analyse physical, transport and material constraints across all 33,755 English Lower-layer Super Output Areas while preserving overlapping local configurations. Results show that similar overall levels of disadvantage can arise from sharply different combinations of constraints. The severity--configuration distinction persists when the relative weights attached to physical, transport and material constraints are varied. The clearest contrast under the equal-weight benchmark links two BM neighbourhoods with almost identical aggregate severity but opposing physical and transport profiles, while approximately 95\% of LSOAs belong to more than one BM neighbourhood. Configurational similarity is also distinct from geographic proximity, indicating that comparable constraint profiles recur across distant places and that contrasting profiles can occur locally. These findings shift the diagnostic question from only where disadvantage is greatest to how that disadvantage is constituted. Distinguishing severity from configuration can improve place-based diagnosis by identifying whether physical access, transport capability or material resources dominate local constraint, while leaving intervention effectiveness to designs capable of estimating it.
+\end{abstract}
+
+\noindent\textbf{Keywords:} food access; food deserts; Ball Mapper; topological data analysis; transport accessibility; deprivation
+
+\section{Introduction}
+Access to affordable and nutritious food remains a persistent policy concern because opportunities are unevenly distributed across places and households \citep{Wrigley2002,Whelan2002,VerPloegWilde2018,Titis2022}. British food-desert research established early that limited retail provision interacts with deprivation, mobility and household resources rather than operating as a simple distance effect \citep{Wrigley2002,Whelan2002,Wrigley2003}. Subsequent work has reinforced that point. Supermarket interventions do not generate homogeneous dietary responses \citep{GillRudkin2014,FreireRudkin2019}; everyday mobility can extend beyond residential neighbourhoods \citep{Shannon2016}; online grocery provision creates additional forms of accessibility and exclusion \citep{Newing2022,Janatabadi2024}; and systematic evidence shows substantial variation in how UK food accessibility is defined and measured \citep{Titis2022}. Together, these strands of evidence give strong reasons to treat access as multidimensional rather than equate it with proximity alone.
+
+Recognising multidimensionality does not resolve how multiple constraints should be represented. Composite indices can summarise the severity of disadvantage across several dimensions, while regression, machine-learning and classification approaches can model complex associations or predict food-access outcomes \citep{Amin2021,Hossain2019,Beydoun2026}. Such approaches answer important questions. Aggregation nevertheless creates a distinct representational problem: two areas can receive similar overall scores while arriving at those scores through markedly different combinations of physical, transport and material constraint. A scalar measure can therefore preserve how much disadvantage is present while obscuring how that disadvantage is constituted. Hard classifications retain multidimensional information differently but require each observation to occupy a single group even when local profiles overlap.
+
+Policy relevance follows from that distinction. Physical retail access, transport capability and material resources describe different constraints and different policy levers. Similar aggregate severity can therefore conceal information relevant to diagnosing the constraint that a place faces. Recent studies likewise treat food environments as products of interacting household, retail and mobility conditions rather than a single access margin \citep{Amin2021,Cuffey2023,Pettigrew2024,Dong2025}. Our evidence informs this diagnostic stage; it does not identify which intervention should be selected or estimate intervention effects.
+
+Ball Mapper (BM) is particularly suited to this task and is deliberately prominent in our design. Introduced by \citet{Dlotko2019}, BM constructs an overlapping system of local neighbourhoods in the observed multidimensional space and records their intersections as a graph. Its suitability here follows from four linked properties: neighbourhoods are defined in the original policy-interpretable metric space; membership may overlap; intersections retain local connectivity; and a fixed graph can be recoloured with contextual variables that did not construct it. Other overlapping representations are possible; BM is useful here because these properties are combined in one directly interpretable empirical object. Existing applications show how BM can expose multidimensional heterogeneity, non-monotonic relationships and locally varying associations in social-science and finance settings \citep{DlotkoQiuRudkin2024,RudkinEtAl2024}. BM therefore supplies the principal representation rather than a visualisation appended to conventional analysis.
+
+We analyse the complete population of 33,755 English 2021 LSOAs, small-area statistical units, in a three-dimensional constraint space comprising physical friction to a large qualifying food store, household transport constraint and income deprivation. Three questions organise the paper. First, does scalar severity conceal distinct configurations of physical, transport and material constraint? Second, how does BM represent overlap among local food-access configurations, and what is not retained under a hard partition? Third, how does configurational similarity relate to geographic proximity, given that food access is intrinsically spatial but need not recur only among neighbouring places?
+
+Three contributions follow. Substantively, we distinguish food-access severity from food-access configuration and show that nearly identical aggregate constraint can correspond to sharply different local profiles. Methodologically, we demonstrate what BM adds when the empirical object of interest is an overlapping configuration landscape: 95.0\% of LSOAs belong to more than one BM neighbourhood, a property that cannot be represented by a mutually exclusive assignment without resolving the overlap by construction. Spatially, we show that configurational and geographic neighbourhoods capture different structures even though the component dimensions remain geographically patterned. Together, the results move the food-access debate beyond a choice between proximity measures and richer scalar indices. Policy diagnosis can depend on both the magnitude of disadvantage and the combination of constraints through which it arises; such diagnosis can inform targeting but does not identify intervention effects. Although estimated for England, the representational problem is more general wherever food access reflects interacting spatial, mobility and material constraints.
+
+\section{Food access, multidimensional disadvantage and configuration}
+\subsection{From proximity to effective access}
+Early British food-desert research treated poor retail access as a policy problem but also cautioned against reducing it to a single geographical mechanism \citep{Wrigley2002,Whelan2002,Wrigley2003}. \citet{Shaw2006} formalised this broader view by distinguishing physical, financial and knowledge or attitudinal barriers, allowing different combinations of constraints to generate food-access disadvantage. Intervention evidence similarly weakened any simple supermarket-solution interpretation. Changes in retail opportunity produced heterogeneous behavioural responses, including across the distribution of fruit and vegetable consumption \citep{GillRudkin2014,FreireRudkin2019}.
+
+More recent research extends effective access beyond residential distance to a store. Household transport resources, everyday mobility and retailer choice affect which opportunities are practically available \citep{VerPloegWilde2018,Shannon2016}. Digital retail adds another layer: online grocery coverage is geographically uneven, and areas can experience combined limitations in physical and online provision \citep{Newing2022,Janatabadi2024}. A systematic review of UK studies documents substantial heterogeneity in definitions, spatial units and accessibility measures, while cautioning that methodological sophistication alone does not guarantee a more meaningful measure \citep{Titis2022}. Comparable international evidence links food environments to transport, household resources and heterogeneous retail contexts \citep{Amin2021,Cuffey2023,Pettigrew2024}. Multidimensionality is therefore established rather than a novelty claimed here.
+
+\subsection{From multidimensionality to the aggregation problem}
+Composite measures respond to multidimensionality by combining several indicators into a tractable summary. Such indices are valuable for ranking, monitoring and targeting, but aggregation changes the question being answered. Recent UK evidence comparing food-desert risk with area deprivation demonstrates substantial overlap alongside meaningful discordance, particularly in rural settings \citep{Beydoun2026}. Related work shows that food environments, household characteristics and policy-relevant outcomes are jointly connected through multiple demand- and supply-side mechanisms \citep{Dong2025}. A richer index can capture more dimensions without necessarily preserving the internal composition of a given score. Configurational thinking also has clear antecedents: \citet{Shaw2006} allowed different combinations of barriers to generate food-access disadvantage. Our contribution is not to rediscover that possibility, but to represent empirically how such combinations are organised, overlap and recur across the complete English small-area landscape.
+
+We use severity to denote the overall magnitude of constraint after information across dimensions is summarised, and configuration to denote the combination of component constraints through which that magnitude arises. Equal severity need not imply equal configuration. Distinguishing the two avoids a false opposition between scalar indices and configurational analysis: each represents different information. Our empirical question is whether information not retained by scalarisation is substantively consequential in the English food-access landscape.
+
+\subsection{Ball Mapper and overlapping policy-relevant structure}
+Ball Mapper addresses a second representational issue. Scalarisation orders magnitude, principal-components analysis constructs variance-maximising orthogonal directions, and hard clustering imposes mutually exclusive groups. BM instead constructs overlapping local neighbourhoods directly in the original standardised constraint space and records their intersections as a graph \citep{Dlotko2019}. Fuzzy or manifold methods can also relax hard partitioning, but BM is attractive for the present policy problem because the physical, transport and material axes remain directly interpretable, neighbourhood membership is explicit, and the same fixed topology can be recoloured with external context. Overlap is not automatically interpreted as substantive bridging; its value is that locally compatible observations need not be forced into one exclusive type before the configuration landscape is examined.
+
+Applications of BM in economics and social science have used this combination of local neighbourhoods, overlap and graph recolouring to reveal relationships that are difficult to summarise through global averages alone \citep{DlotkoQiuRudkin2024,RudkinEtAl2024}. Our application makes BM central to a substantive question about food access: whether areas with similar apparent food-access severity occupy different configurations of physical, transport and material constraint, and whether those configurations recur across geographic space. Conventional scalar, hard-clustering and geographic representations remain informative comparators, but BM supplies the principal empirical representation rather than a secondary robustness device.
+
+\section{Data and methods}
+\subsection{Study population and measures}
+Analysis covers all 33,755 Lower-layer Super Output Areas (LSOAs) in England under the 2021 statistical geography. Each LSOA is retained regardless of whether it contains a qualifying store. A complete analytical frame contains one record for every English LSOA and no missing data on the three variables used to construct the configuration space.
+
+Physical friction is derived from GEOLYTIX Retail Points Q1 2023 \citep{Geolytix2023}. Qualifying stores are retail points in GEOLYTIX size bands B, C or D, corresponding to retail floor areas of at least 280~m$^2$. Straight-line Euclidean distance is calculated in British National Grid coordinates (EPSG:27700) from the Office for National Statistics 2021 LSOA population-weighted centroid to the nearest qualifying store \citep{ONS2021PWC}. Physical friction enters the analysis as $\log(1+d_i)$, where $d_i$ is distance in kilometres; higher values indicate greater constraint.
+
+Transport constraint is the percentage of households with no car or van, derived from Census 2021 table TS045 \citep{ONS2023Car}. It equals $100\times$ households reporting no cars or vans divided by all households in the LSOA. Material constraint is the 2025 Income Deprivation Domain score from the English Indices of Deprivation \citep{MHCLG2025}; higher scores indicate greater material disadvantage.
+
+Contextual variables are used only to describe the resulting BM neighbourhoods. ONS 2021 Rural Urban Classification provides rural--urban context \citep{ONS2026RUC}; IUC 2018 contributes a ten-group nominal digital-context classification \citep{AlexiouSingleton2018}; and Department for Transport 2025 Transport Connectivity Metric shopping scores provide walking, cycling, public-transport, driving and overall connectivity measures \citep{DfT2025}. Qualifying-store presence/count and a $k$-means benchmark are also attached after BM construction. None of these variables determines BM neighbourhoods or radius selection.
+
+\subsection{Ball Mapper and configuration analysis}
+Each of the three constraint dimensions is standardised to a $z$-score over the 33,755 LSOAs, with higher values consistently indicating greater constraint. Euclidean distance in this three-dimensional space measures configurational separation.
+
+Ball Mapper is the principal analytical representation. Using the R \texttt{BallMapper} package, a greedy landmark procedure selects the first uncovered observation and continues until radius-$\varepsilon$ balls cover the point cloud. A node represents one ball and contains all observations within $\varepsilon$ of its landmark; two nodes are connected when their balls share at least one observation. An LSOA may therefore belong to several balls. BM is used to represent local neighbourhood structure in the observed multidimensional constraint space rather than to reduce its dimensionality. Balls are interpreted as overlapping local configuration neighbourhoods, not clusters or latent classes, and multiple membership is not automatically interpreted as a bridge between discrete regimes.
+
+Radius selection used topology-only diagnostics over a grid from 0.01 to 9.15 in increments of 0.01. Each radius was evaluated under 1,000 reproducibly seeded landmark orderings, with no contextual variables included in the selection process. Diagnostic review identified a stable region centred near 1.49; radius 1.50 was retained for the main analysis. Nearby radii 1.40, 1.45, 1.55 and 1.60 are used for sensitivity analysis rather than as alternative preferred specifications.
+
+Ball-level means on the three standardised axes summarise local configuration. Descriptive labels are assigned from these means: low for values below $-0.5$, near sample mean for $-0.5\leq z<0.5$, high for $0.5\leq z<1.0$, and very high for $z\geq1.0$. A scalar average-constraint benchmark is the unweighted mean of the three standardised ball-axis means. Pairwise composition distance is the Euclidean distance between two balls' three-axis mean vectors. A non-scalar contrast requires both an absolute scalar gap below 0.25 and a composition distance above 1.0. Applying these fixed criteria to all ball pairs identifies 38 contrasts. The equal-weight benchmark makes the information loss from scalarisation transparent; it is not proposed as a preferred policy index.
+
+A $k=3$ $k$-means solution provides a hard-clustering benchmark using the same three standardised axes. The Calinski--Harabasz criterion selected $k=3$. Alignment is evaluated from each BM ball's composition by $k$-means assignment. The comparison asks how a mutually exclusive partition represents the same observations; it does not treat hard clustering as an alternative topology or imply universal superiority for BM.
+
+\subsection{Robustness and spatial analysis}
+Landmark-order robustness compares the radius-1.50 construction with 1,000 reproducibly seeded orderings. Nearby-radius sensitivity repeats the same evidence summaries over radii 1.40, 1.45, 1.50, 1.55 and 1.60, again using 1,000 orderings per radius under a common deterministic schedule. Continuous ball-level readout patterns are assessed using rank correlations. Sparse and discrete readouts are interpreted more cautiously because exact observation-level composition is naturally less stable under small changes to overlapping covers.
+
+Two additional checks test whether severity--configuration divergence depends on the benchmark scalar or screening thresholds while holding the BM topology fixed. First, the scalar-gap threshold is varied from 0.05 to 0.30 and the composition-distance threshold from 1.0 to 3.0. Second, scalar severity is recalculated under every non-negative weight triple on a 0.05 simplex grid, giving 231 alternative scalarisations of the same physical, transport and material profiles. Results are summarised for all weights and for balanced subsets in which every dimension receives at least 0.10 or 0.20 weight. These checks test the recurrence of non-scalar contrasts rather than invariance of any particular ball pair.
+
+Spatial analysis asks whether configurational structure is reducible to geographic proximity. English LSOA 2021 boundary geometries are transformed to British National Grid (EPSG:27700), and representative points are generated using point-on-surface geometry. Geographic $k$-nearest-neighbour sets are compared with nearest neighbours in the three-dimensional standardised configuration space using Jaccard overlap. A deterministic sample of 500,000 LSOA pairs compares Euclidean configuration distance with straight-line geographic separation. Queen contiguity on LSOA polygons is used to examine within-ball spatial components and locally juxtaposed configuration contrasts.
+
+Spatial autocorrelation is reported descriptively rather than inferentially. Row-standardised Queen Moran's $I$ is 0.720 for physical friction, 0.781 for transport constraint and 0.577 for material constraint. No spatial significance test, causal spatial model, spatial regression or spatial HAC estimator is claimed.
+
+\section{Results}
+\subsection{Overlapping configuration structure}
+At radius 1.50, the radius-1.50 BM graph contains 24 balls and 92 edges in one connected component, with no isolated balls. Mean membership is 2.926 balls per LSOA and 94.999\% of LSOAs belong to more than one ball. Overlap is therefore the dominant observation-level condition rather than an exceptional feature. Accordingly, the 24 balls represent intersecting local neighbourhoods in configuration space rather than 24 area types.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/figure1_canonical_bm_three_axes.pdf}
+\caption{Radius-1.50 Ball Mapper graph recoloured by the three topology dimensions. Node positions, edges and memberships are fixed across panels; only the variable used for recolouring changes. Node size reflects neighbourhood membership count, while colour represents the ball-level standardised difference from the England mean.}
+\label{fig:canonicalbm}
+\end{figure}
+
+A complementary topology-axis heatmap in Figure~\ref{fig:axisheat} shows substantial variation in the composition of physical, transport and material constraint across the BM balls. Thresholded summaries yield 17 distinct three-axis signatures. Variation is therefore not exhausted by movement along a single low-to-high constraint gradient.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/figure2_topology_axis_heatmap.pdf}
+\caption{Topology-axis profiles across the 24 Ball Mapper neighbourhoods. Cells report ball-level standardised differences from the England mean. Balls are overlapping neighbourhoods rather than mutually exclusive classes.}
+\label{fig:axisheat}
+\end{figure}
+
+\subsection{Similar severity, different mechanisms}
+Applying the fixed non-scalar screen identifies 38 ball pairs with a scalar gap below 0.25 and a composition distance above 1.0. Supplementary Table~S1 reports the complete screened set so that the Ball 13/18 example can be assessed against the wider pattern rather than treated as an isolated selected pair. Under the equal-weight benchmark, Ball 13 versus Ball 18 provides the clearest illustration because it combines an exceptionally small scalar gap with a large composition distance. Ball 13 contains 3,785 members and Ball 18 contains 2,006. Their scalar mean-constraint gap is 0.001874, yet the Euclidean distance between their three-axis composition profiles is 4.397.
+
+Ball 13 combines low physical friction with very high transport constraint and material constraint close to the sample mean. Ball 18 exhibits the opposite physical--transport configuration: very high physical friction, low transport constraint and low material constraint. Accordingly, the analytical scalar benchmark places the two neighbourhoods at essentially the same overall level while not retaining the composition through which area-level constraint is represented. Ball 13/18 therefore supplies the central empirical reason for treating severity and configuration as distinct analytical objects.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Principal non-scalar configuration contrast}
+\label{tab:contrast}
+\begin{tabular}{lcc}
+\toprule
+ & Ball 13 & Ball 18 \\
+\midrule
+Members & 3,785 & 2,006 \\
+Physical friction & Low & Very high \\
+Transport constraint & Very high & Low \\
+Material constraint & Near sample mean & Low \\
+\midrule
+\multicolumn{3}{l}{Scalar mean-constraint gap: 0.001874}\\
+\multicolumn{3}{l}{Three-axis composition distance: 4.397233}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Labels use the fixed descriptive thresholds defined in Methods; they summarise ball-level axis profiles and do not create classes.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Contextual readouts and the hard-clustering benchmark}
+Contextual readouts vary across the fixed topology (Figure~\ref{fig:context}). Shopping connectivity is comparatively high across several neighbourhoods characterised by greater transport constraint and comparatively low in several physically remote neighbourhoods. Qualifying-store count follows a different pattern, reinforcing the distinction between topology inputs and external context.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/figure3_context_readout_heatmap.pdf}
+\caption{Selected contextual readouts across the fixed 24-ball topology. Cells report ball-level standardised differences from the England mean. Readouts are attached after topology construction and do not determine radius selection or ball membership.}
+\label{fig:context}
+\end{figure}
+
+Hard-clustering assignments sometimes align closely with BM neighbourhoods but do not uniformly reproduce their local heterogeneity. Six of the 24 balls have a modal $k$-means share below 0.80. Rather than establishing general superiority of BM over clustering, the comparison identifies a representational difference: $k$-means resolves every LSOA into one mutually exclusive assignment, whereas BM preserves local neighbourhood overlap. Where a BM neighbourhood contains materially mixed $k$-means assignments, the hard partition and overlapping cover summarise the same multidimensional data through different empirical objects.
+
+\subsection{Robustness of the main interpretation}
+Core continuous readout patterns are stable to landmark ordering: the minimum reference-versus-repeated-order Spearman correlation across the core evidence is approximately 0.9279. Nearby-radius sensitivity is still stronger. Across radii 1.40, 1.45, 1.50, 1.55 and 1.60, using 1,000 orderings per radius, the minimum core mean-pattern Spearman correlation is approximately 0.9975. These diagnostics support the substantive ball-level patterns around radius 1.50 without implying exact pointwise invariance or converting the sensitivity radii into alternative preferred specifications.
+
+Severity--configuration divergence is also robust to the scalar benchmark and screening rule. Even under the much stricter requirement of a scalar gap below 0.05 and a composition distance above 3.0, eight ball pairs remain (Supplementary Table~S2). Across the 45 balanced scalarisations in which physical, transport and material constraints each receive at least 0.20 weight, every weighting produces between 28 and 45 non-scalar contrasts under the main 0.25/1.0 screen, with a median of 36. Requiring composition distance above 2.0 still leaves at least 17 contrasts for every balanced weighting, and requiring distance above 3.0 leaves at least seven (Supplementary Table~S3). The identity of the clearest pair can change with weighting: Balls 13 and 18 satisfy the main screen under 12 of the 45 balanced scalarisations. The robust result is therefore the recurrence of severity-equivalent but compositionally different neighbourhoods, not universal scalar equivalence for one selected pair.
+
+Sparse and categorical readouts require a narrower claim. Their exact observation-level composition can change more readily as overlapping covers change. Interpretation therefore rests on ball-level composition and repeated-order distributions rather than exact pointwise stability.
+
+\subsection{Configuration is not geographic proximity}
+All three food-access axes are spatially patterned, as the descriptive Moran statistics show, but their joint configuration is not reproduced by geographic neighbourhoods. At $k=25$, the mean Jaccard overlap between configurational and geographic nearest-neighbour sets is 0.00285 and the median is zero. Fully 89.39\% of LSOAs have zero shared neighbours under the two definitions; the mean number shared is 0.138 of 25. Configurational neighbours are also frequently distant: their median geographic separation is 160.4 km, with 85.14\% more than 50 km away and 70.45\% more than 100 km away.
+
+Figure~\ref{fig:spatialclosure}(a) shows the share of LSOAs with no common neighbours under the two definitions across $k$. Zero overlap remains common even as neighbourhood size increases. A separate deterministic audit of 500,000 LSOA pairs reaches the same conclusion. Pearson and Spearman correlations between configuration distance and geographic distance are 0.01926 and 0.01646, respectively. Even among the 10\% of pairs that are most similar configurationally, median geographic separation is 171.0 km; 90.22\% are separated by more than 50 km and 75.04\% by more than 100 km. Median geographic separation changes only modestly across configuration-distance deciles (Figure~\ref{fig:spatialclosure}(b)).
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/figure4a_zero_overlap_share.pdf}
+\caption{Share of LSOAs with zero overlap between geographic and configurational neighbour sets.}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/figure4b_geographic_distance_deciles.pdf}
+\caption{Median geographic separation across deciles of configuration distance.}
+\end{subfigure}
+\caption{Spatial closure. Panel (a) shows that geographic and configurational neighbourhoods frequently contain no common LSOAs. Panel (b) shows that geographic separation varies only modestly across configuration-distance deciles in the deterministic 500,000-pair audit. Together, the panels show that similarity in food-access configuration is not reducible to physical proximity.}
+\label{fig:spatialclosure}
+\end{figure}
+
+Spatial dispersion is also visible within BM neighbourhoods: all 24 balls occupy more than one Queen-connected spatial component. Conversely, different configurations can occur in close proximity. Balls 7 and 16 have a three-axis composition distance of 2.232 but centroid separation of only 6.515 km; the minimum distance between exclusive members is 0.372 km and there are 2,766 cross-ball Queen adjacencies. Configuration is therefore neither a disguised national distance gradient nor simply an urban--rural partition. Space matters, but it does not reproduce the multivariate configuration structure.
+
+\section{Discussion}
+\subsection{Severity and configuration answer different policy questions}
+Results establish a distinction between the magnitude and the constitution of food-access disadvantage. Existing research already shows that food access is multidimensional and that deprivation, mobility and retail provision are not interchangeable \citep{Shaw2006,Titis2022,Beydoun2026}. Our contribution begins after that recognition. BM shows that multidimensional disadvantage itself has internal configuration: similar scalar severity can arise through different combinations of physical, transport and material constraint.
+
+Under the equal-weight benchmark, Balls 13 and 18 provide the clearest example. Their average-constraint scores are almost indistinguishable, yet their three-axis profiles differ sharply. Ball 13 combines low physical friction with very high transport constraint, whereas Ball 18 combines very high physical friction with comparatively low transport and material constraint. A scalar diagnostic rule could place such areas together without being numerically inconsistent while discarding information about which constraint dominates locally. Configuration therefore complements rather than invalidates severity. Policy analysis can ask both which places face greater overall disadvantage and which combinations of constraint characterise places at a given level of disadvantage. Configurational evidence contributes to diagnosis and can inform how targeting categories are interpreted, without establishing which intervention should be selected or what effect it would have.
+
+That distinction sharpens a prior policy-diagnostic problem. Retail-location and planning measures act on physical opportunity; transport and mobility measures act on the capability to reach opportunities; income or affordability support acts on material constraint. These levers can coexist in different combinations, so equal severity need not describe an equivalent policy circumstance. Cross-sectional configuration does not establish which intervention is appropriate or effective, but it identifies why those questions should not begin from an assumption that similarly scored places face the same constraint. Such interpretation is consistent with recent work emphasising interacting retail, household and mobility conditions \citep{Cuffey2023,Pettigrew2024,Dong2025}.
+
+Scalar-weight sensitivity sharpens this interpretation. Changing the relative weight placed on physical, transport and material constraints changes which particular neighbourhood pairs receive similar aggregate severity, as any weighted index should. Yet balanced positive weightings continue to generate many cases in which similar severity corresponds to materially different configurations. The contribution therefore does not depend on treating equal weighting as uniquely correct. Instead, it concerns a general property of scalarisation: aggregation can retain overall magnitude while discarding the combination of constraints that produces it.
+
+\subsection{Why Ball Mapper matters for analysing food-access configurations}
+Ball Mapper remains substantive to the contribution because its empirical object is the overlapping neighbourhood graph. Scalar severity orders magnitude; PCA summarises variance on transformed axes; hard clustering assigns mutually exclusive groups. BM retains local neighbourhoods on the original physical, transport and material axes and records their intersections. Approximately 95\% of English LSOAs belong to more than one ball. Its importance is representational: describing the 24 balls as 24 discrete food-desert types would contradict a cover in which local compatibility with several neighbourhoods is pervasive.
+
+BM is also preferable here to treating overlap only as an abstract membership weight or embedding observations solely on latent coordinates. Policy interpretation requires the three constraint axes to remain visible, while graph recolouring allows shopping connectivity, store presence and comparator assignments to interrogate a topology they did not construct. Hard-clustering results show the practical distinction: some BM neighbourhoods align closely with one hard cluster, while six have modal $k$-means shares below 0.80. Each representation preserves different features of the same data; BM is used because overlapping local configuration is the object of interest.
+
+\subsection{A geography of recurring configurations}
+Spatial closure establishes that configuration space and geographic space are related but non-equivalent. Component dimensions remain spatially patterned, yet geographic nearest neighbours rarely coincide with configurational nearest neighbours. Similar configurations recur over substantial distances, while different configurations can occur in close proximity. Balls 7 and 16 illustrate the latter: their configurations differ materially despite geographically close centroids, sub-kilometre separation between some exclusive members, and extensive cross-ball Queen adjacency.
+
+Place-based targeting does not imply that adjacent places share the same problem structure. A geographically distant LSOA can be a closer configurational comparator than an adjacent LSOA when the substantive question concerns the joint pattern of physical, transport and material constraints. Such comparators are descriptive rather than causal counterfactuals. Their value lies in identifying recurring policy circumstances across space and locally juxtaposed differences that geographic proximity alone can conceal.
+
+\subsection{Relation to the food-access literature and wider policy relevance}
+Findings extend rather than overturn the food-desert literature. Early UK studies established the importance of physical retail access while recognising interactions with deprivation and mobility \citep{Wrigley2002,Whelan2002,Wrigley2003}. Later work demonstrated heterogeneous intervention responses \citep{GillRudkin2014,FreireRudkin2019}, broadened access to everyday mobility and online provision \citep{Shannon2016,Newing2022,Janatabadi2024}, and developed multidimensional indices and predictive approaches \citep{Amin2021,Beydoun2026}. Our evidence adds a configurational question to that progression. Once multiple dimensions are admitted, their combination can itself become an object of policy analysis.
+
+Recent studies have introduced newer analytical methods when they resolve a substantive representation or prediction problem, including machine learning for food insecurity and retailer access and network analysis of food-security structure \citep{Hossain2019,Amin2021,Sartori2015}. BM extends that repertoire for a different problem: preserving overlapping, directly interpretable local configurations. Methodological prominence follows from the substantive object it reveals, not from novelty alone.
+
+England supplies a complete small-area application rather than a claim that its numerical configuration profiles transfer unchanged to other countries. Broader policy relevance nevertheless travels: whenever effective food access reflects interacting physical opportunity, mobility capability and material resources, an aggregate severity measure can group places whose constraints are constituted differently. Configurational analysis offers a way to retain that distinction while leaving intervention effectiveness to designs capable of estimating it.
+
+\subsection{Limitations}
+Several limitations delimit inference. Area-level configurations do not identify household food-shopping behaviour, and contextual shopping measures are consequently treated as readouts rather than behavioural outcomes generated by the topology. Cross-sectional evidence cannot establish causal effects of retail provision, transport capability or deprivation. Our three-axis representation is deliberately parsimonious and does not exhaust affordability dynamics, food quality, cultural appropriateness, informal food sources, online behaviour or individual mobility. These omissions matter because contemporary food-environment research identifies each as potentially relevant to effective access \citep{Dong2025,Titis2022}.
+
+Radius 1.50 is a scientific specification supported by topology diagnostics and nearby-radius sensitivity, not an estimated optimum. Robustness exercises establish stability of the principal ball-level patterns around that choice rather than a unique true topology. Sparse categorical readouts warrant additional restraint because observation-level composition can change more readily under overlapping covers. IUC coverage is incomplete for 1,945 LSOAs and is used only as nominal context. Spatial statistics establish descriptive non-equivalence between geographic and configurational structure rather than spatial causal processes. These boundaries leave the central result intact: within the three-dimensional representation analysed here, severity does not uniquely identify configuration and BM reveals extensive overlap among local configuration neighbourhoods.
+
+\section{Conclusion}
+Food-access disadvantage has both magnitude and composition. Across 33,755 English LSOAs, BM reveals that areas with almost identical aggregate constraint can occupy markedly different combinations of physical friction, transport constraint and material deprivation. Approximately 95\% of LSOAs belong to multiple BM neighbourhoods, showing that overlap is a pervasive feature of the configuration landscape rather than an exceptional boundary condition.
+
+Ball Mapper is central because it retains overlapping local neighbourhoods on the original constraint axes. Equal severity, hard-group membership and geographic adjacency do not reproduce that configuration structure, while BM keeps composition, overlap and graph connectivity available for interpretation. The severity--configuration distinction also persists across alternative balanced scalar weightings, so it is not an artefact of the equal-weight benchmark.
+
+For place-based policy, the immediate implication is diagnostic rather than causal. Place-based diagnosis can distinguish how disadvantaged an area is from how its disadvantage is constituted; that information can inform targeting decisions without identifying the effectiveness of any particular intervention. Physical retail access, transport capability and material constraint describe different policy levers, and similar overall severity need not imply equivalent local circumstances. Although the empirical estimates are English, the severity--configuration distinction is relevant wherever effective food access depends on interacting spatial, mobility and material constraints.
+
+\section*{Data and code availability}
+Source data comprise publicly available Office for National Statistics, Ministry of Housing, Communities and Local Government, Department for Transport and GeoDS data together with GEOLYTIX Retail Points Q1 2023. Source data remain subject to their respective provider licences and are not redistributed where licensing prevents this. Reproducible analysis code and non-restricted derived outputs will be deposited in a public research repository where licensing permits; restricted source data remain available from their original providers under the relevant licences.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
+During preparation of this work, the author used OpenAI ChatGPT for literature organisation, manuscript structuring, coding support and language editing. The author reviewed and edited all AI-assisted material and takes full responsibility for the content of the manuscript.
+
+\begin{thebibliography}{99}
+\bibitem[Alexiou and Singleton(2018)]{AlexiouSingleton2018} Alexiou, A. and Singleton, A. (2018). The 2018 Internet User Classification. Geographic Data Service (GeoDS).
+\bibitem[Amin et~al.(2021)Amin, Badruddoza and McCluskey]{Amin2021} Amin, M.D., Badruddoza, S. and McCluskey, J.J. (2021). Predicting access to healthful food retailers with machine learning. \emph{Food Policy}, 99, 101985.
+\bibitem[Beydoun et~al.(2026)Beydoun et~al.]{Beydoun2026} Beydoun, M.A., Georgescu, M.F., Banerjee, S., Beydoun, H.A., Noren Hooten, N., Khubchandani, J., Maldonado, A.I., Tsai, J., Weiss, J., Evans, M.K. and Zonderman, A.B. (2026). Mapping food access: how neighborhood deprivation shapes healthy food availability in the United Kingdom. \emph{BMC Public Health}, 26, 1048.
+\bibitem[Cuffey et~al.(2023)Cuffey et~al.]{Cuffey2023} Cuffey, J., Li, W., Yu, Y. and Miao, R. (2023). Retail food environment and household food waste: An empirical study. \emph{Food Policy}, 117, 102457.
+\bibitem[Department for Transport(2025)]{DfT2025} Department for Transport (2025). Transport connectivity metric. Department for Transport, London.
+\bibitem[Dłotko(2019)]{Dlotko2019} Dłotko, P. (2019). Ball mapper: a shape summary for topological data analysis. arXiv:1901.07410.
+\bibitem[Dłotko et~al.(2024)Dłotko, Qiu and Rudkin]{DlotkoQiuRudkin2024} Dłotko, P., Qiu, W. and Rudkin, S.T. (2024). Financial ratios and stock returns reappraised through a topological data analysis lens. \emph{The European Journal of Finance}, 30(1), 53--77.
+\bibitem[Dong et~al.(2025)Dong et~al.]{Dong2025} Dong, X., Byrne, A.T., Rhone, A. and Ver Ploeg, M. (2025). Review: untangling the complex economics of the local food retail environment. \emph{Food Policy}, 137, 102953.
+\bibitem[Freire and Rudkin(2019)]{FreireRudkin2019} Freire, T. and Rudkin, S. (2019). Healthy food diversity and supermarket interventions: Evidence from the Seacroft Intervention Study. \emph{Food Policy}, 83, 125--138.
+\bibitem[GEOLYTIX(2023)]{Geolytix2023} GEOLYTIX (2023). Retail Points Q1 2023. GEOLYTIX, London.
+\bibitem[Gill and Rudkin(2014)]{GillRudkin2014} Gill, L. and Rudkin, S. (2014). Deconstructing supermarket intervention effects on fruit and vegetable consumption in areas of limited retail access: evidence from the Seacroft Study. \emph{Environment and Planning A}, 46, 649--665.
+\bibitem[Hossain et~al.(2019)Hossain, Mullally and Asadullah]{Hossain2019} Hossain, M., Mullally, C. and Asadullah, M.N. (2019). Alternatives to calorie-based indicators of food security: An application of machine learning methods. \emph{Food Policy}, 84, 77--91.
+\bibitem[Janatabadi et~al.(2024)Janatabadi, Newing and Ermagun]{Janatabadi2024} Janatabadi, F., Newing, A. and Ermagun, A. (2024). Social and spatial inequalities of contemporary food deserts: A compound of store and online access to food in the United Kingdom. \emph{Applied Geography}, 163, 103184.
+\bibitem[Ministry of Housing, Communities and Local Government(2025)]{MHCLG2025} Ministry of Housing, Communities and Local Government (2025). English indices of deprivation 2025. Ministry of Housing, Communities and Local Government, London.
+\bibitem[Newing et~al.(2022)Newing et~al.]{Newing2022} Newing, A., Hood, N., Videira, F. and Lewis, J. (2022). `Sorry we do not deliver to your area': geographical inequalities in online groceries provision. \emph{The International Review of Retail, Distribution and Consumer Research}, 32(1), 80--99.
+\bibitem[Office for National Statistics(2021)]{ONS2021PWC} Office for National Statistics (2021). Lower layer Super Output Areas (December 2021) EW population weighted centroids. Office for National Statistics.
+\bibitem[Office for National Statistics(2023)]{ONS2023Car} Office for National Statistics (2023). Car or van availability, Census 2021, dataset TS045, version 4. Office for National Statistics.
+\bibitem[Office for National Statistics(2026)]{ONS2026RUC} Office for National Statistics (2026). 2021 Rural Urban Classification. Office for National Statistics.
+\bibitem[Pettigrew et~al.(2024)Pettigrew et~al.]{Pettigrew2024} Pettigrew, S., Booth, L., Farrar, V., Brown, J., Godic, B. and Thompson, J. (2024). An emerging food policy domain: The effects of autonomous transport technologies on food access and consumption. \emph{Food Policy}, 125, 102647.
+\bibitem[Rudkin et~al.(2024)Rudkin et~al.]{RudkinEtAl2024} Rudkin, S., Barros, L., Dłotko, P. and Qiu, W. (2024). An economic topology of the Brexit vote. \emph{Regional Studies}, 58(3), 601--618.
+\bibitem[Sartori and Schiavo(2015)]{Sartori2015} Sartori, M. and Schiavo, S. (2015). Connected we stand: A network perspective on trade and global food security. \emph{Food Policy}, 57, 114--127.
+\bibitem[Shannon(2016)]{Shannon2016} Shannon, J. (2016). Beyond the supermarket solution: Linking food deserts, neighborhood context, and everyday mobility. \emph{Annals of the American Association of Geographers}, 106(1), 186--202.
+\bibitem[Shaw(2006)]{Shaw2006} Shaw, H.J. (2006). Food deserts: Towards the development of a classification. \emph{Geografiska Annaler: Series B, Human Geography}, 88(2), 231--247.
+\bibitem[Titis et~al.(2022)Titis, Procter and Walasek]{Titis2022} Titis, E., Procter, R. and Walasek, L. (2022). Assessing physical access to healthy food across United Kingdom: A systematic review of measures and findings. \emph{Obesity Science \& Practice}, 8, 233--246.
+\bibitem[Ver Ploeg and Wilde(2018)]{VerPloegWilde2018} Ver Ploeg, M. and Wilde, P.E. (2018). How do food retail choices vary within and between food retail environments? \emph{Food Policy}, 79, 300--308.
+\bibitem[Whelan et~al.(2002)Whelan et~al.]{Whelan2002} Whelan, A., Wrigley, N., Warm, D. and Cannings, E. (2002). Life in a `food desert'. \emph{Urban Studies}, 39(11), 2083--2100.
+\bibitem[Wrigley(2002)]{Wrigley2002} Wrigley, N. (2002). `Food deserts' in British cities: Policy context and research priorities. \emph{Urban Studies}, 39(11), 2029--2040.
+\bibitem[Wrigley et~al.(2003)Wrigley, Warm and Margetts]{Wrigley2003} Wrigley, N., Warm, D. and Margetts, B. (2003). Deprivation, diet, and food-retail access: Findings from the Leeds `food deserts' study. \emph{Environment and Planning A}, 35, 151--188.
+\end{thebibliography}
+
+\end{document}

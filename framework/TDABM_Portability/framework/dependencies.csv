@@ -1,0 +1,12 @@
+package,source,minimum_version,role
+BallMapper,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+Rcpp,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+data.table,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+doSNOW,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+dplyr,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+fields,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+foreach,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+ggplot2,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+igraph,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+png,CRAN or configured repository,not recoverable from supplied archive,runtime dependency
+digest,R package,optional,SHA-256 hashing fallback

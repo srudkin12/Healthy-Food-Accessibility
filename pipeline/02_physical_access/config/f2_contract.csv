@@ -1,0 +1,11 @@
+item,value
+publication_geography,England LSOA21
+expected_lsoa21_rows,33755
+jts_reference_period,2019
+jts_role,historical physical-access comparator and student-provenance audit
+tcm_reference_period,Q4 2024 / Q1 2025
+tcm_role,contemporary external benchmark
+geolytix_role,deferred to F3 pending reproducible source/version closure
+student_pt_car_check,must be computed from raw DfT source
+served_only_filter,PROHIBITED
+

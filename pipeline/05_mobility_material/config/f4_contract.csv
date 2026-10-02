@@ -1,0 +1,11 @@
+item,contract
+population,33755 English LSOA21
+inheritance,F3 full-population functional retail access
+primary_physical_friction,Geolytix >=280m2 nearest distance from ONS LSOA21 population-weighted centroid
+mobility_capability,2021 Census percentage households with no car or van
+material_capability,English Indices of Deprivation 2025 Income Deprivation score
+geographic_closure,ONS 2021 Rural Urban Classification at LSOA21
+digital_capability,deferred to F5; do not use ordinal IUC 1-10 coding
+JTS2019_public_transport,excluded under F2A source-conflict contract
+TDABM,deferred
+student_typology,node labels not inherited
