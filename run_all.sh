@@ -163,6 +163,10 @@ run_stage 13 scalarisation_robustness bash -lc "set -Eeuo pipefail;
   Rscript --vanilla \"\$S/R/01_scalarisation_robustness.R\" \"\$E\" \"\$S/config/expected_values.csv\" \"\$S/results\""
 
 run_stage 14 manuscript_outputs bash -lc "set -Eeuo pipefail;
+
+echo '=== v0.25 post-baseline extensions ==='
+bash "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/pipeline/14_v025_extensions/run_hfa_v025_extensions.sh"
+
   Rscript --vanilla '$ROOT/scripts/14_make_manuscript_outputs.R' '$ROOT'; mkdir -p '$ROOT/manuscript/figures'; cp -a '$ROOT/outputs/manuscript/figures/.' '$ROOT/manuscript/figures/';
   cp '$ROOT/outputs/manuscript/supplementary/'*.csv '$ROOT/manuscript/'; Rscript --vanilla '$ROOT/scripts/14b_make_supplement_tex.R' '$ROOT';
   if command -v pdflatex >/dev/null 2>&1; then cd '$ROOT/manuscript'; pdflatex -interaction=nonstopmode -halt-on-error manuscript.tex; pdflatex -interaction=nonstopmode -halt-on-error manuscript.tex; pdflatex -interaction=nonstopmode -halt-on-error supplementary_material.tex; pdflatex -interaction=nonstopmode -halt-on-error supplementary_material.tex; else echo 'PDFLATEX_NOT_FOUND: numerical/table/figure replication completed; PDF compilation skipped'; fi"

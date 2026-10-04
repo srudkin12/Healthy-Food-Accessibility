@@ -1,0 +1,22 @@
+{
+  "manuscript_baseline": "v0.25",
+  "title": "Similar Food-Access Scores, Different Barriers: Capturing Food-Access Profiles in England",
+  "n_lsoa": 33755,
+  "canonical_radius": 1.5,
+  "canonical_n_balls": 24,
+  "canonical_edges": 92,
+  "canonical_components": 1,
+  "canonical_qualifying_pairs": 38,
+  "canonical_total_pairs": 276,
+  "canonical_pair_prevalence": 0.13768115942028986,
+  "ball13_18_score_gap": 0.0018742566141,
+  "ball13_18_profile_distance": 4.3972327089,
+  "knn_k25_zero_overlap_share": 0.893941638275811,
+  "knn_k25_independent_set_zero_overlap_share": 0.9816408454710995,
+  "knn_median_jaccard_k1_100": 0.0,
+  "core_contrast_constructions": 5000,
+  "core_contrast_median_pair_prevalence": 0.15789473684210525,
+  "core_contrast_min_pair_prevalence": 0.10507246376811594,
+  "core_contrast_max_pair_prevalence": 0.24736842105263157,
+  "share_constructions_with_any_qualifying_pair": 1.0
+}

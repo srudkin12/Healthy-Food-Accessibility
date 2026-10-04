@@ -35,10 +35,19 @@ pipeline/*/food_application/input/
 framework/TDABM_Portability/outputs/
 
 outputs/
-manuscript/figures/
+manuscript/figures/*
+!manuscript/figures/figure1_canonical_bm_three_axes.pdf
+!manuscript/figures/figure1_canonical_bm_three_axes.png
+!manuscript/figures/figure2_topology_axis_heatmap.pdf
+!manuscript/figures/figure2_topology_axis_heatmap.png
+!manuscript/figures/figure3_context_readout_heatmap.pdf
+!manuscript/figures/figure3_context_readout_heatmap.png
+!manuscript/figures/figure4a_zero_overlap_share.pdf
+!manuscript/figures/figure4a_zero_overlap_share.png
 manuscript/*.aux
 manuscript/*.log
 manuscript/*.out
 manuscript/*.toc
 manuscript/*.synctex.gz
 *.pre_*
+/pipeline/14_v025_extensions/results/

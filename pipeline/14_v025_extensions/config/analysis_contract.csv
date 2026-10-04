@@ -1,0 +1,17 @@
+field,value
+input_filename,food_hfa_readout_frame.csv
+input_sha256,b7172b17c788f8be3ec844029dd62cf4c1339d698fc33ee6df52115646eb8764
+canonical_radius,1.50
+sensitivity_radii,1.40;1.45;1.50;1.55;1.60
+repetitions_per_radius,1000
+base_seed,20260807
+seed_formula,base_seed + replicate*1009
+scalar_gap_threshold,0.25
+profile_distance_threshold,1.0
+expected_n_lsoa,33755
+expected_canonical_n_balls,24
+expected_canonical_total_pairs,276
+expected_canonical_qualifying_pairs,38
+expected_canonical_pair_prevalence,0.13768115942028986
+expected_ball13_18_scalar_gap,0.0018742566141
+expected_ball13_18_profile_distance,4.3972327089

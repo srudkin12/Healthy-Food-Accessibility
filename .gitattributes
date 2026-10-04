@@ -1,0 +1,4 @@
+# Treat publication and compressed artefacts as binary in Git.
+*.pdf binary
+*.png binary
+*.gz binary

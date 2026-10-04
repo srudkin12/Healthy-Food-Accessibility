@@ -8,7 +8,7 @@
 | 02 | Build physical-access and transport-source components |
 | 03 | Validate and harmonise the 2019 DfT journey-time comparator |
 | 04 | Reconstruct Q1-2023 retail supply and functional physical access |
-| 05 | Add mobility/material constraints and diagnostic comparator structures |
+| 05 | Add household car-availability and income-deprivation constraints and diagnostic comparator structures |
 | 06 | Add RUC, IUC and DfT TCM contextual readouts |
 | 07 | Freeze the three-axis analytical input |
 | 08 | Run the 915-radius Ball Mapper diagnostic grid and repeated landmark orders |

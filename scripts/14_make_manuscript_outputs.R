@@ -16,6 +16,7 @@ p14d <- file.path(root, 'pipeline', '10_evidence_robustness', 'food_application'
 food24 <- file.path(root, 'pipeline', '11_interpretation', 'results')
 sp <- file.path(root, 'pipeline', '12_spatial_closure', 'results')
 sc <- file.path(root, 'pipeline', '13_scalarisation_robustness', 'results')
+ext <- file.path(root, 'pipeline', '14_v025_extensions', 'results', 'public')
 
 readc <- function(p) {
   if (!file.exists(p)) stop('Required manuscript evidence missing: ', p, call. = FALSE)
@@ -42,6 +43,22 @@ for (src_name in names(copy_map)) {
   src <- file.path(sc, src_name)
   if (!file.exists(src)) stop('Scalarisation output missing: ', src, call. = FALSE)
   file.copy(src, file.path(supp, unname(copy_map[[src_name]])), overwrite = TRUE)
+}
+
+ext_copy <- c(
+  'supplementary_data_knn_overlap_k1_100.csv',
+  'supplementary_data_knn_overlap_display_k5_100.csv',
+  'supplementary_data_knn_overlap_with_independent_set_benchmark.csv',
+  'supplementary_data_knn_overlap_display_with_benchmark_k5_100.csv',
+  'supplementary_data_core_contrast_by_replicate.csv',
+  'supplementary_data_core_contrast_threshold_by_replicate.csv.gz',
+  'supplementary_table_S4_core_contrast_cover_robustness.csv',
+  'supplementary_table_S5_core_contrast_threshold_cover_robustness.csv'
+)
+for (src_name in ext_copy) {
+  src <- file.path(ext, src_name)
+  if (!file.exists(src)) stop('v0.25 extension output missing: ', src, call. = FALSE)
+  file.copy(src, file.path(supp, src_name), overwrite = TRUE)
 }
 
 p1318 <- contr[(contr$ball_a == 13 & contr$ball_b == 18) |
@@ -89,7 +106,7 @@ axis_vars <- c(
   'transport_constraint_no_car_pct',
   'material_constraint_income_deprivation_2025'
 )
-axis_labels <- c('Physical friction', 'Transport constraint', 'Material constraint')
+axis_labels <- c('Retail-proximity constraint', 'Household car-availability constraint', 'Income deprivation')
 m2 <- matrix(NA_real_, nrow = length(axis_vars), ncol = 24L)
 for (i in seq_along(axis_vars)) {
   q <- axis_profiles[axis_profiles$variable == axis_vars[[i]], , drop = FALSE]
@@ -113,7 +130,7 @@ ctx_vars <- c(
 )
 ctx_labels <- c(
   'Shopping: walk', 'Shopping: cycle', 'Shopping: public transport',
-  'Shopping: drive', 'Shopping: overall', 'Qualifying-store count'
+  'Shopping: drive', 'Shopping: overall', 'Included-retailer count'
 )
 m3 <- matrix(NA_real_, nrow = length(ctx_vars), ncol = 24L)
 for (i in seq_along(ctx_vars)) {
@@ -178,30 +195,44 @@ grDevices::png(file.path(fig, 'figure1_canonical_bm_three_axes.png'), width = 24
 draw_fig1(); grDevices::dev.off()
 
 # -------------------------------------------------------------------------
-# Figure 4: spatial closure, using the accepted fresh spatial outputs.
+# Figure 4: current v0.25 spatial comparison plus retained historical 4b.
 # -------------------------------------------------------------------------
-knn <- readc(file.path(sp, 'topology_geography_knn_summary.csv'))
+knn_bench <- readc(file.path(ext, 'supplementary_data_knn_overlap_display_with_benchmark_k5_100.csv'))
 dec <- readc(file.path(sp, 'configuration_geography_distance_deciles.csv'))
 
 plot4a <- function() {
-  op <- graphics::par(mar = c(4.5, 5.4, 0.8, 0.8)); on.exit(graphics::par(op), add = TRUE)
+  op <- graphics::par(mar = c(4.5, 5.8, 0.8, 0.8)); on.exit(graphics::par(op), add = TRUE)
   graphics::plot(
-    knn$k, 100 * knn$zero_overlap_share, type = 'b', pch = 19, lwd = 1.4,
-    xlab = 'Number of neighbours, k', ylab = 'LSOAs with zero shared neighbours (%)',
-    ylim = c(0, 100), xaxt = 'n'
+    knn_bench$k, 100 * knn_bench$zero_overlap_share,
+    type = 'b', pch = 19, lwd = 1.5, col = '#1f77b4',
+    xlab = 'Number of neighbours, k',
+    ylab = 'LSOAs with zero shared neighbours (%)',
+    ylim = c(0, 100), xlim = c(5, 100), xaxt = 'n'
   )
-  graphics::axis(1, at = knn$k)
+  graphics::lines(
+    knn_bench$k, 100 * knn_bench$independent_set_zero_overlap_share,
+    lty = 2, lwd = 1.5, col = '#ff7f0e'
+  )
+  graphics::axis(1, at = c(5, 25, 50, 75, 100))
+  graphics::legend(
+    'bottomleft',
+    legend = c('Observed', 'Independent-set benchmark'),
+    col = c('#1f77b4', '#ff7f0e'),
+    lty = c(1, 2), pch = c(19, NA), lwd = 1.5,
+    bty = 'n', cex = 0.9
+  )
 }
 grDevices::pdf(file.path(fig, 'figure4a_zero_overlap_share.pdf'), width = 5.5, height = 4.5, useDingbats = FALSE)
 plot4a(); grDevices::dev.off()
-grDevices::png(file.path(fig, 'figure4a_zero_overlap_share.png'), width = 1000, height = 820, res = 160)
+grDevices::png(file.path(fig, 'figure4a_zero_overlap_share.png'), width = 1528, height = 1159, res = 220)
 plot4a(); grDevices::dev.off()
 
+# Historical Figure 4b is retained for reproducibility but is not used by v0.25.
 plot4b <- function() {
   op <- graphics::par(mar = c(4.5, 5.6, 0.8, 0.8)); on.exit(graphics::par(op), add = TRUE)
   graphics::plot(
     dec$decile, dec$median_geographic_distance_km, type = 'b', pch = 19, lwd = 1.4,
-    xlab = 'Configuration-distance decile (1 = most similar)',
+    xlab = 'Barrier-profile difference decile (1 = most similar)',
     ylab = 'Median geographic distance (km)', xaxt = 'n'
   )
   graphics::axis(1, at = dec$decile)

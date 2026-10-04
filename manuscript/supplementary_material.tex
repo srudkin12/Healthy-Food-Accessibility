@@ -1,126 +1,145 @@
-% Copyright (c) 2026 Barry Malachy, Tegan Massey, Simon Rudkin, Frances Stratton-Killick, Martha Surman. Supplement text not MIT-licensed.
 \documentclass[10pt,a4paper]{article}
-\usepackage[margin=1.4cm]{geometry}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage[T1]{fontenc}
+\usepackage[margin=1.6cm]{geometry}
+\usepackage{booktabs,longtable,array,caption,microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
 \begin{document}
 \begin{center}
-\textbf{Barry Malachy, Tegan Massey, Simon Rudkin, Frances Stratton-Killick, Martha Surman}\\
-School of Social Sciences, University of Manchester\\
-Corresponding author: Simon Rudkin
+{\Large\bfseries Supplementary Material}\\[4pt]
+{\large Similar Food-Access Scores, Different Barriers: Capturing Food-Access Profiles in England}
 \end{center}
-
-\section*{Supplementary material}
-Machine-readable versions of Tables S1--S3 and the complete scalar-weight sensitivity results are included with the accompanying replication package.
-
-\subsection*{Table S1. Non-scalar Ball Mapper contrasts}
-Table S1 reports all 38 ball pairs meeting the main equal-weight screen: absolute scalar gap below 0.25 and three-axis composition distance above 1.0. Rows are ordered by increasing scalar gap.
-\small
-\begin{longtable}{rrrrp{4.0cm}p{4.0cm}}
+\vspace{6pt}
+Supplementary Tables S1--S5 report the detailed contrast, threshold, weighting and construction-sensitivity evidence cited in the manuscript. BM-ball pair quantities are descriptive comparisons within a representation and are not independent statistical observations.
+\section*{Supplementary Table S1. Canonical near-equal-score / different-profile BM-ball comparisons}
+\scriptsize
+\begin{longtable}{rrrrp{4.25cm}p{4.25cm}}
 \toprule
-Ball A & Ball B & Scalar gap & Composition distance & Configuration A & Configuration B \\
+Ball A & Ball B & Score gap & Profile distance & Barrier profile A & Barrier profile B\\
 \midrule
 \endfirsthead
 \toprule
-Ball A & Ball B & Scalar gap & Composition distance & Configuration A & Configuration B \\
+Ball A & Ball B & Score gap & Profile distance & Barrier profile A & Barrier profile B\\
 \midrule
 \endhead
-13 & 18 & 0.0019 & 4.3972 & P=low | T=very high | M=near sample mean & P=very high | T=low | M=low \\
-1 & 15 & 0.0055 & 3.0350 & P=low | T=very high | M=low & P=high | T=near sample mean | M=near sample mean \\
-4 & 21 & 0.0124 & 5.9791 & P=low | T=very high | M=very high & P=very high | T=low | M=low \\
-2 & 20 & 0.0205 & 5.1490 & P=low | T=very high | M=near sample mean & P=very high | T=low | M=near sample mean \\
-19 & 22 & 0.0240 & 3.1468 & P=near sample mean | T=very high | M=very high & P=very high | T=near sample mean | M=very high \\
-8 & 22 & 0.0318 & 3.4523 & P=low | T=very high | M=very high & P=very high | T=near sample mean | M=very high \\
-1 & 13 & 0.0355 & 1.1712 & P=low | T=very high | M=low & P=low | T=very high | M=near sample mean \\
-1 & 18 & 0.0374 & 4.8579 & P=low | T=very high | M=low & P=very high | T=low | M=low \\
-13 & 15 & 0.0410 & 2.1576 & P=low | T=very high | M=near sample mean & P=high | T=near sample mean | M=near sample mean \\
-15 & 18 & 0.0428 & 2.5478 & P=high | T=near sample mean | M=near sample mean & P=very high | T=low | M=low \\
-22 & 23 & 0.0441 & 3.9616 & P=very high | T=near sample mean | M=very high & P=low | T=very high | M=very high \\
-17 & 18 & 0.0511 & 3.7260 & P=near sample mean | T=near sample mean | M=very high & P=very high | T=low | M=low \\
-2 & 10 & 0.0525 & 2.5181 & P=low | T=very high | M=near sample mean & P=low | T=high | M=very high \\
-13 & 17 & 0.0530 & 1.6460 & P=low | T=very high | M=near sample mean & P=near sample mean | T=near sample mean | M=very high \\
-2 & 5 & 0.0677 & 2.4646 & P=low | T=very high | M=near sample mean & P=near sample mean | T=high | M=very high \\
-10 & 20 & 0.0730 & 4.4138 & P=low | T=high | M=very high & P=very high | T=low | M=near sample mean \\
-5 & 20 & 0.0883 & 4.0008 & P=near sample mean | T=high | M=very high & P=very high | T=low | M=near sample mean \\
-1 & 17 & 0.0885 & 2.7835 & P=low | T=very high | M=low & P=near sample mean | T=near sample mean | M=very high \\
-15 & 17 & 0.0940 & 1.1846 & P=high | T=near sample mean | M=near sample mean & P=near sample mean | T=near sample mean | M=very high \\
-9 & 21 & 0.1139 & 6.5563 & P=low | T=very high | M=high & P=very high | T=low | M=low \\
-4 & 5 & 0.1211 & 1.0710 & P=low | T=very high | M=very high & P=near sample mean | T=high | M=very high \\
-4 & 9 & 0.1263 & 1.2156 & P=low | T=very high | M=very high & P=low | T=very high | M=high \\
-5 & 21 & 0.1335 & 5.1781 & P=near sample mean | T=high | M=very high & P=very high | T=low | M=low \\
-14 & 16 & 0.1416 & 2.3434 & P=near sample mean | T=high | M=near sample mean & P=very high | T=low | M=low \\
-10 & 21 & 0.1487 & 5.5932 & P=low | T=high | M=very high & P=very high | T=low | M=low \\
-3 & 15 & 0.1525 & 1.1732 & P=near sample mean | T=near sample mean | M=high & P=high | T=near sample mean | M=near sample mean \\
-1 & 3 & 0.1580 & 2.3247 & P=low | T=very high | M=low & P=near sample mean | T=near sample mean | M=high \\
-3 & 14 & 0.1738 & 1.0808 & P=near sample mean | T=near sample mean | M=high & P=near sample mean | T=high | M=near sample mean \\
-7 & 16 & 0.1764 & 2.2318 & P=low | T=near sample mean | M=near sample mean & P=very high | T=low | M=low \\
-2 & 4 & 0.1888 & 1.6722 & P=low | T=very high | M=near sample mean & P=low | T=very high | M=very high \\
-6 & 16 & 0.1910 & 1.3154 & P=near sample mean | T=low | M=near sample mean & P=very high | T=low | M=low \\
-3 & 13 & 0.1935 & 1.2148 & P=near sample mean | T=near sample mean | M=high & P=low | T=very high | M=near sample mean \\
-3 & 18 & 0.1954 & 3.6897 & P=near sample mean | T=near sample mean | M=high & P=very high | T=low | M=low \\
-2 & 21 & 0.2012 & 6.1649 & P=low | T=very high | M=near sample mean & P=very high | T=low | M=low \\
-4 & 20 & 0.2093 & 4.8292 & P=low | T=very high | M=very high & P=very high | T=low | M=near sample mean \\
-16 & 24 & 0.2201 & 1.9583 & P=very high | T=low | M=low & P=low | T=near sample mean | M=near sample mean \\
-20 & 21 & 0.2217 & 1.1827 & P=very high | T=low | M=near sample mean & P=very high | T=low | M=low \\
-5 & 9 & 0.2474 & 2.2160 & P=near sample mean | T=high | M=very high & P=low | T=very high | M=high \\
+13 & 18 & 0.0019 & 4.397 & retail=low | car=very high | income=near mean & retail=very high | car=low | income=low \\
+1 & 15 & 0.0055 & 3.035 & retail=low | car=very high | income=low & retail=high | car=near mean | income=near mean \\
+4 & 21 & 0.0124 & 5.979 & retail=low | car=very high | income=very high & retail=very high | car=low | income=low \\
+2 & 20 & 0.0205 & 5.149 & retail=low | car=very high | income=near mean & retail=very high | car=low | income=near mean \\
+19 & 22 & 0.0240 & 3.147 & retail=near mean | car=very high | income=very high & retail=very high | car=near mean | income=very high \\
+8 & 22 & 0.0318 & 3.452 & retail=low | car=very high | income=very high & retail=very high | car=near mean | income=very high \\
+1 & 13 & 0.0355 & 1.171 & retail=low | car=very high | income=low & retail=low | car=very high | income=near mean \\
+1 & 18 & 0.0374 & 4.858 & retail=low | car=very high | income=low & retail=very high | car=low | income=low \\
+13 & 15 & 0.0410 & 2.158 & retail=low | car=very high | income=near mean & retail=high | car=near mean | income=near mean \\
+15 & 18 & 0.0428 & 2.548 & retail=high | car=near mean | income=near mean & retail=very high | car=low | income=low \\
+22 & 23 & 0.0441 & 3.962 & retail=very high | car=near mean | income=very high & retail=low | car=very high | income=very high \\
+17 & 18 & 0.0511 & 3.726 & retail=near mean | car=near mean | income=very high & retail=very high | car=low | income=low \\
+2 & 10 & 0.0525 & 2.518 & retail=low | car=very high | income=near mean & retail=low | car=high | income=very high \\
+13 & 17 & 0.0530 & 1.646 & retail=low | car=very high | income=near mean & retail=near mean | car=near mean | income=very high \\
+2 & 5 & 0.0677 & 2.465 & retail=low | car=very high | income=near mean & retail=near mean | car=high | income=very high \\
+10 & 20 & 0.0730 & 4.414 & retail=low | car=high | income=very high & retail=very high | car=low | income=near mean \\
+5 & 20 & 0.0883 & 4.001 & retail=near mean | car=high | income=very high & retail=very high | car=low | income=near mean \\
+1 & 17 & 0.0885 & 2.783 & retail=low | car=very high | income=low & retail=near mean | car=near mean | income=very high \\
+15 & 17 & 0.0940 & 1.185 & retail=high | car=near mean | income=near mean & retail=near mean | car=near mean | income=very high \\
+9 & 21 & 0.1139 & 6.556 & retail=low | car=very high | income=high & retail=very high | car=low | income=low \\
+4 & 5 & 0.1211 & 1.071 & retail=low | car=very high | income=very high & retail=near mean | car=high | income=very high \\
+4 & 9 & 0.1263 & 1.216 & retail=low | car=very high | income=very high & retail=low | car=very high | income=high \\
+5 & 21 & 0.1335 & 5.178 & retail=near mean | car=high | income=very high & retail=very high | car=low | income=low \\
+14 & 16 & 0.1416 & 2.343 & retail=near mean | car=high | income=near mean & retail=very high | car=low | income=low \\
+10 & 21 & 0.1487 & 5.593 & retail=low | car=high | income=very high & retail=very high | car=low | income=low \\
+3 & 15 & 0.1525 & 1.173 & retail=near mean | car=near mean | income=high & retail=high | car=near mean | income=near mean \\
+1 & 3 & 0.1580 & 2.325 & retail=low | car=very high | income=low & retail=near mean | car=near mean | income=high \\
+3 & 14 & 0.1738 & 1.081 & retail=near mean | car=near mean | income=high & retail=near mean | car=high | income=near mean \\
+7 & 16 & 0.1764 & 2.232 & retail=low | car=near mean | income=near mean & retail=very high | car=low | income=low \\
+2 & 4 & 0.1888 & 1.672 & retail=low | car=very high | income=near mean & retail=low | car=very high | income=very high \\
+6 & 16 & 0.1910 & 1.315 & retail=near mean | car=low | income=near mean & retail=very high | car=low | income=low \\
+3 & 13 & 0.1935 & 1.215 & retail=near mean | car=near mean | income=high & retail=low | car=very high | income=near mean \\
+3 & 18 & 0.1954 & 3.690 & retail=near mean | car=near mean | income=high & retail=very high | car=low | income=low \\
+2 & 21 & 0.2012 & 6.165 & retail=low | car=very high | income=near mean & retail=very high | car=low | income=low \\
+4 & 20 & 0.2093 & 4.829 & retail=low | car=very high | income=very high & retail=very high | car=low | income=near mean \\
+16 & 24 & 0.2201 & 1.958 & retail=very high | car=low | income=low & retail=low | car=near mean | income=near mean \\
+20 & 21 & 0.2217 & 1.183 & retail=very high | car=low | income=near mean & retail=very high | car=low | income=low \\
+5 & 9 & 0.2474 & 2.216 & retail=near mean | car=high | income=very high & retail=low | car=very high | income=high \\
 \bottomrule
 \end{longtable}
 \normalsize
-
-\subsection*{Table S2. Screen-threshold sensitivity}
-Counts of ball pairs meeting alternative combinations of scalar-gap and composition-distance thresholds.
-\begin{center}
-\begin{tabular}{rrr}
+\textit{Note:} The canonical representation contains 24 BM balls and therefore 276 possible unordered ball-pair comparisons. Table S1 lists the 38 comparisons satisfying the main definition: absolute equal-weight score gap below 0.25 and barrier-profile distance above 1.0.
+\section*{Supplementary Table S2. Canonical-cover threshold sensitivity}
+\begin{center}\small
+\begin{tabular}{rrrrrr}
 \toprule
-Scalar-gap threshold & Composition-distance threshold & Qualifying pairs \\
+Score-gap threshold & $d>1.0$ & $d>1.5$ & $d>2.0$ & $d>2.5$ & $d>3.0$\\
 \midrule
-0.05 & 1.0 & 11 \\
-0.10 & 1.0 & 19 \\
-0.15 & 1.0 & 25 \\
-0.20 & 1.0 & 33 \\
-0.25 & 1.0 & 38 \\
-0.30 & 1.0 & 42 \\
-0.05 & 1.5 & 10 \\
-0.10 & 1.5 & 17 \\
-0.15 & 1.5 & 21 \\
-0.20 & 1.5 & 25 \\
-0.25 & 1.5 & 29 \\
-0.30 & 1.5 & 33 \\
-0.05 & 2.0 & 10 \\
-0.10 & 2.0 & 16 \\
-0.15 & 2.0 & 20 \\
-0.20 & 2.0 & 23 \\
-0.25 & 2.0 & 26 \\
-0.30 & 2.0 & 30 \\
-0.05 & 2.5 & 9 \\
-0.10 & 2.5 & 14 \\
-0.15 & 2.5 & 17 \\
-0.20 & 2.5 & 18 \\
-0.25 & 2.5 & 20 \\
-0.30 & 2.5 & 22 \\
-0.05 & 3.0 & 8 \\
-0.10 & 3.0 & 11 \\
-0.15 & 3.0 & 14 \\
-0.20 & 3.0 & 15 \\
-0.25 & 3.0 & 17 \\
-0.30 & 3.0 & 18 \\
+0.05 & 11 & 10 & 10 & 9 & 8\\
+0.10 & 19 & 17 & 16 & 14 & 11\\
+0.15 & 25 & 21 & 20 & 17 & 14\\
+0.20 & 33 & 25 & 23 & 18 & 15\\
+0.25 & 38 & 29 & 26 & 20 & 17\\
+0.30 & 42 & 33 & 30 & 22 & 18\\
 \bottomrule
 \end{tabular}
 \end{center}
-
-\subsection*{Table S3. Scalar-weight sensitivity}
-Summary counts across deterministic scalar-weight schemes. The complete 231-weight grid is included as machine-readable data.
-\begin{center}
-\begin{tabular}{lrrrr}
+\textit{Note:} Cells give the number of canonical BM-ball pairs satisfying each combination.
+\section*{Supplementary Table S3. Scalar-weight sensitivity in the canonical BM cover}
+\begin{center}\scriptsize
+\begin{tabular}{lrrrrrrrrrrrr}
 \toprule
-Weight subset & Schemes & Minimum & Median & Maximum \\
+Weight subset & Schemes & Min wt. & \multicolumn{3}{c}{Dist. $>1$} & \multicolumn{3}{c}{Dist. $>2$} & \multicolumn{3}{c}{Dist. $>3$}\\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}\cmidrule(lr){10-12}
+ & & & Min & Med. & Max & Min & Med. & Max & Min & Med. & Max\\
 \midrule
-all nonnegative & 231 & 19 & 35 & 99 \\
-each weight ge 010 & 120 & 26 & 36 & 72 \\
-each weight ge 020 & 45 & 28 & 36 & 45 \\
+All non-negative & 231 & 0.00 & 19 & 35 & 99 & 10 & 22 & 64 & 4 & 12 & 28 \\
+Each weight $\geq0.10$ & 120 & 0.10 & 26 & 36 & 72 & 13 & 23 & 40 & 6 & 12 & 21 \\
+Each weight $\geq0.20$ & 45 & 0.20 & 28 & 36 & 45 & 17 & 23 & 29 & 7 & 14 & 19 \\
 \bottomrule
 \end{tabular}
 \end{center}
+\textit{Note:} Counts are canonical-cover BM-ball comparisons under alternative non-negative weight triples on the 0.05 simplex grid.
+\section*{Supplementary Table S4. Core-contrast robustness across landmark orderings and nearby radii}
+\begin{center}\small
+\begin{tabular}{rrrrrrrr}
+\toprule
+Radius & Reps & Median balls & Median pairs & Median prev. & 10th pct. & 90th pct. & Any pair\\
+\midrule
+1.40 & 1000 & 27 & 53 & 15.61\% & 13.96\% & 17.54\% & 100.0\% \\
+1.45 & 1000 & 24 & 45 & 15.69\% & 13.85\% & 17.79\% & 100.0\% \\
+1.50 & 1000 & 23 & 39 & 15.81\% & 13.77\% & 17.80\% & 100.0\% \\
+1.55 & 1000 & 21 & 34 & 15.79\% & 13.81\% & 18.13\% & 100.0\% \\
+1.60 & 1000 & 19 & 29 & 16.18\% & 13.68\% & 18.57\% & 100.0\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textit{Note:} Prevalence is the share of all possible unordered BM-ball pairs in each construction that satisfies the main comparison definition.
+\section*{Supplementary Table S5. Joint threshold and BM-construction sensitivity}
+\textbf{Panel A. Share of the 5,000 sensitivity constructions containing at least one qualifying pair}
+\begin{center}\small
+\begin{tabular}{rrrrrr}
+\toprule
+Score-gap threshold & $d>1.0$ & $d>1.5$ & $d>2.0$ & $d>2.5$ & $d>3.0$\\
+\midrule
+0.05 & 99.96\% & 99.88\% & 99.48\% & 98.80\% & 96.92\%\\
+0.10 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 99.96\%\\
+0.15 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\%\\
+0.20 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\%\\
+0.25 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\%\\
+0.30 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Panel B. Median qualifying-pair prevalence across the 5,000 sensitivity constructions}
+\begin{center}\small
+\begin{tabular}{rrrrrr}
+\toprule
+Score-gap threshold & $d>1.0$ & $d>1.5$ & $d>2.0$ & $d>2.5$ & $d>3.0$\\
+\midrule
+0.05 & 2.92\% & 2.38\% & 2.00\% & 1.71\% & 1.42\%\\
+0.10 & 6.00\% & 5.13\% & 4.21\% & 3.42\% & 2.86\%\\
+0.15 & 9.26\% & 7.69\% & 6.43\% & 5.24\% & 4.33\%\\
+0.20 & 12.55\% & 10.39\% & 8.62\% & 7.08\% & 5.83\%\\
+0.25 & 15.79\% & 13.00\% & 10.67\% & 8.83\% & 7.25\%\\
+0.30 & 19.30\% & 15.69\% & 13.00\% & 10.67\% & 8.70\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+\textit{Note:} Each cell summarises 5,000 constructions: 1,000 landmark orderings at each of radii 1.40, 1.45, 1.50, 1.55 and 1.60. The sensitivity range is descriptive, not a sampling confidence interval.
 \end{document}

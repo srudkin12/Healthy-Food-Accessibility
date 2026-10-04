@@ -91,3 +91,16 @@ Reduced-repetition run:
 HFA_REPLICATION_VERIFICATION=PASS
 HFA_QUICK_REPLICATION=PASS
 ```
+
+## Manuscript v0.25 post-baseline extensions
+
+The original `v1.0.0` baseline remains preserved. Manuscript v0.25 adds a checksum-gated post-baseline stage at `pipeline/14_v025_extensions/`.
+
+A canonical run uses `N_REPS=1000`. The extension stage reproduces:
+
+- exact geographic-versus-barrier-profile KNN overlap for `k=1,...,100`;
+- the independent-set combinatorial benchmark used by current Figure 4;
+- the direct near-equal-score/different-profile criterion over 5 radii × 1,000 seeded landmark orderings;
+- Supplementary Tables S4-S5 and their construction-level source data.
+
+Current manuscript-facing frozen outputs are stored under `expected/manuscript_v0_25/`; historical `v1.0.0` expected outputs remain in place. The current manuscript source and figures remain outside the MIT software licence as documented in `LICENSE_SCOPE.md`.
