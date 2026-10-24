@@ -69,32 +69,70 @@ utils::write.csv(p1318, file.path(tab, 'table1_principal_non_scalar_contrast.csv
 # -------------------------------------------------------------------------
 # Heatmap helper.
 # -------------------------------------------------------------------------
-draw_heatmap <- function(mat, row_labels, pdf_file, png_file, width = 12, height = 3.4,
-                         zlim = c(-4, 4)) {
+draw_heatmap <- function(mat, row_labels, pdf_file, png_file, width = 9.0, height = 3.6,
+                         zlim = c(-4, 4), row_label_cex = 1.20, ball_cex = 0.90,
+                         left_margin = 10.0) {
   stopifnot(nrow(mat) == length(row_labels))
   nr <- nrow(mat); nc <- ncol(mat)
   cols <- grDevices::colorRampPalette(c('#2166AC', '#F7F7F7', '#B2182B'))(201)
-  # Preserve matrix dimensions while clipping to the plotting range.
-  # pmax()/pmin() with a scalar first argument can drop matrix dimensions.
   z <- mat
   z[is.finite(z) & z < zlim[[1L]]] <- zlim[[1L]]
   z[is.finite(z) & z > zlim[[2L]]] <- zlim[[2L]]
+
   draw <- function() {
-    op <- graphics::par(mar = c(4.4, 12.0, 0.7, 1.0), xpd = NA)
+    op <- graphics::par(
+      mar = c(4.8, left_margin, 0.8, 0.8),
+      mgp = c(2.6, 0.75, 0),
+      xpd = NA
+    )
     on.exit(graphics::par(op), add = TRUE)
+
     graphics::image(
       x = seq_len(nc), y = seq_len(nr), z = t(z[nr:1, , drop = FALSE]),
-      col = cols, zlim = zlim, axes = FALSE, xlab = '', ylab = ''
+      col = cols, zlim = zlim, axes = FALSE, xlab = '', ylab = '',
+      xlim = c(0.5, nc + 0.5), ylim = c(0.5, nr + 0.5)
     )
-    graphics::axis(1, at = seq_len(nc), labels = seq_len(nc), cex.axis = 0.72)
-    graphics::axis(2, at = seq_len(nr), labels = rev(row_labels), las = 1, cex.axis = 0.82)
-    graphics::mtext('Ball', side = 1, line = 2.8)
+
+    for (xx in seq(1.5, nc - 0.5, by = 1)) {
+      graphics::segments(
+        xx, 0.5, xx, nr + 0.5,
+        col = grDevices::adjustcolor('white', alpha.f = 0.32), lwd = 0.7
+      )
+    }
+    for (yy in seq(1.5, nr - 0.5, by = 1)) {
+      graphics::segments(
+        0.5, yy, nc + 0.5, yy,
+        col = grDevices::adjustcolor('white', alpha.f = 0.42), lwd = 0.9
+      )
+    }
+
+    graphics::axis(
+      1, at = seq_len(nc), labels = seq_len(nc),
+      cex.axis = ball_cex
+    )
+    graphics::axis(
+      2, at = seq_len(nr), labels = rev(row_labels),
+      las = 1, cex.axis = row_label_cex, tick = FALSE
+    )
+    graphics::mtext('Ball', side = 1, line = 3.0, cex = 0.98)
     graphics::box()
   }
-  grDevices::pdf(pdf_file, width = width, height = height, useDingbats = FALSE)
-  draw(); grDevices::dev.off()
-  grDevices::png(png_file, width = 2000, height = round(2000 * height / width), res = 170)
-  draw(); grDevices::dev.off()
+
+  grDevices::pdf(
+    pdf_file, width = width, height = height,
+    useDingbats = FALSE, pointsize = 12
+  )
+  draw()
+  grDevices::dev.off()
+
+  grDevices::png(
+    png_file,
+    width = round(1800 * width / 9.0),
+    height = round((1800 * width / 9.0) * height / width),
+    res = 200
+  )
+  draw()
+  grDevices::dev.off()
 }
 
 # -------------------------------------------------------------------------
@@ -106,7 +144,7 @@ axis_vars <- c(
   'transport_constraint_no_car_pct',
   'material_constraint_income_deprivation_2025'
 )
-axis_labels <- c('Retail-proximity constraint', 'Household car-availability constraint', 'Income deprivation')
+axis_labels <- c('Retail-proximity\nconstraint', 'Household\ncar-availability\nconstraint', 'Income deprivation')
 m2 <- matrix(NA_real_, nrow = length(axis_vars), ncol = 24L)
 for (i in seq_along(axis_vars)) {
   q <- axis_profiles[axis_profiles$variable == axis_vars[[i]], , drop = FALSE]
@@ -117,7 +155,8 @@ draw_heatmap(
   m2, axis_labels,
   file.path(fig, 'figure2_topology_axis_heatmap.pdf'),
   file.path(fig, 'figure2_topology_axis_heatmap.png'),
-  height = 3.0
+  width = 9.0, height = 3.9,
+  row_label_cex = 1.18, ball_cex = 0.90, left_margin = 12.8
 )
 
 # -------------------------------------------------------------------------
@@ -129,8 +168,8 @@ ctx_vars <- c(
   'tcm_shopping_drive', 'tcm_shopping_overall', 'internal_qualifying_store_count'
 )
 ctx_labels <- c(
-  'Shopping: walk', 'Shopping: cycle', 'Shopping: public transport',
-  'Shopping: drive', 'Shopping: overall', 'Included-retailer count'
+  'Shopping:\nwalk', 'Shopping:\ncycle', 'Shopping:\npublic transport',
+  'Shopping:\ndrive', 'Shopping:\noverall', 'Included-retailer\ncount'
 )
 m3 <- matrix(NA_real_, nrow = length(ctx_vars), ncol = 24L)
 for (i in seq_along(ctx_vars)) {
@@ -142,7 +181,8 @@ draw_heatmap(
   m3, ctx_labels,
   file.path(fig, 'figure3_context_readout_heatmap.pdf'),
   file.path(fig, 'figure3_context_readout_heatmap.png'),
-  height = 4.7
+  width = 9.0, height = 5.7,
+  row_label_cex = 1.16, ball_cex = 0.90, left_margin = 9.8
 )
 
 # -------------------------------------------------------------------------
