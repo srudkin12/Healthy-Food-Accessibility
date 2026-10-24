@@ -14,6 +14,26 @@ Replication materials for the paper by **Barry Malachy, Tegan Massey, Simon Rudk
 
 All authors are affiliated with the **Department of Social Statistics, University of Manchester**.
 
+## Current release alignment
+
+Repository release **v1.1.1** is aligned to manuscript **v0.26**.
+
+- `manuscript/manuscript.tex` is the exact v0.26 manuscript source.
+- Figures 2 and 3 are the final readability versions accepted on 24 October 2026.
+- The empirical results, canonical Ball Mapper topology, sensitivity results and
+  supplementary numerical evidence are unchanged from the v0.25 empirical freeze.
+- Historical directories and stage names containing `v025` are retained deliberately
+  for provenance because those analytical extensions were introduced at v0.25 and
+  were not recomputed for v0.26.
+- Historical repository tag `v1.1.0` remains unchanged.
+
+Exact v0.26 manuscript-source SHA-256:
+
+`dcc562028cae969d7538d0fbdbd9e6985c474ebbcb31a6741af82cea96c5ff79`
+
+See `VERSION_ALIGNMENT.md` for the release-to-manuscript mapping.
+
+
 ## What this repository reproduces
 
 The repository reconstructs the English LSOA analytical frame from the documented source vintages, builds the three-dimensional food-access constraint space, runs Ball Mapper radius diagnostics, freezes the researcher-approved radius **1.50** canonical topology, and reproduces the paper's interpretation, robustness, spatial comparison, scalarisation sensitivity, figures and machine-readable supplementary outputs.
@@ -37,7 +57,7 @@ The 38/276 quantity is a descriptive prevalence among **BM-ball profile comparis
 
 The radius is an explicit scientific choice. The code never selects an "optimal" radius automatically.
 
-## v0.25 extensions
+## Post-baseline analytical extensions
 
 The repository now also reproduces two accepted analyses added after the original `v1.0.0` release:
 
@@ -94,12 +114,12 @@ pipeline/       accepted source-construction and analysis code
 framework/      TDABM/Ball Mapper framework used by the paper
 scripts/        repository-level output, validation and maintenance scripts
 config/         canonical expected values and runtime example
-expected/       accepted compact evidence, including manuscript v0.25 outputs
+expected/       accepted compact empirical evidence, including the frozen v0.25 evidence
 provenance/     code-lineage and source-provenance material
-manuscript/     manuscript v0.25 source and submission figures
+manuscript/     manuscript v0.26 source and submission figures
 ```
 
-`pipeline/14_v025_extensions/` contains the accepted k=1..100 KNN and 5,000-construction core-contrast extensions. `expected/manuscript_v0_25/` separates current manuscript-facing evidence from the historical `v1.0.0` baseline.
+`pipeline/14_v025_extensions/` contains the accepted k=1..100 KNN and 5,000-construction core-contrast extensions. `expected/manuscript_v0_25/` retains the frozen empirical evidence introduced at v0.25. These names are preserved for provenance; v0.26 changes manuscript clarity and figure readability without changing that empirical evidence.
 
 Generated raw data, staged data, full results, checkpoints, R libraries and logs are ignored by Git and are not redistributed.
 
@@ -107,11 +127,11 @@ Generated raw data, staged data, full results, checkpoints, R libraries and logs
 
 Geography contains some information about barrier-profile similarity, because observed neighbour-set overlap is greater than the independent-set benchmark. Geographic proximity nevertheless does not reproduce most multivariate barrier-profile neighbour relationships. Figure 4 reports the observed zero-overlap share against the exact independent-set expectation.
 
-Historical sampled-pair spatial diagnostics remain useful provenance material but are not presented as current v0.25 manuscript evidence.
+Historical sampled-pair spatial diagnostics remain useful provenance material but are not presented as current v0.26 manuscript evidence.
 
 ## Reproducibility status
 
-The original repository release followed a complete source-to-paper clean-room replication of the frozen analytical input and canonical topology. The v0.25 refresh adds checksum-gated accepted extension code and frozen manuscript-facing evidence without reopening the scientific design.
+The original repository release followed a complete source-to-paper clean-room replication of the frozen analytical input and canonical topology. The v0.25 refresh added checksum-gated accepted extension code and frozen manuscript-facing empirical evidence without reopening the scientific design. Release v1.1.1 aligns the repository manuscript source and presentation figures with manuscript v0.26; the empirical contract remains unchanged.
 
 See `REPLICATION.md` for canonical versus reduced-repetition execution details and `pipeline/14_v025_extensions/PROVENANCE.md` for the post-release extension lineage.
 

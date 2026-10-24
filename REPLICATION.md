@@ -92,9 +92,9 @@ HFA_REPLICATION_VERIFICATION=PASS
 HFA_QUICK_REPLICATION=PASS
 ```
 
-## Manuscript v0.25 post-baseline extensions
+## Manuscript v0.26 alignment and frozen v0.25 empirical extensions
 
-The original `v1.0.0` baseline remains preserved. Manuscript v0.25 adds a checksum-gated post-baseline stage at `pipeline/14_v025_extensions/`.
+The original `v1.0.0` baseline remains preserved. The empirical extensions introduced for manuscript v0.25 remain checksum-gated at `pipeline/14_v025_extensions/`. Manuscript v0.26 uses the same empirical contract and does not recompute those results.
 
 A canonical run uses `N_REPS=1000`. The extension stage reproduces:
 
@@ -103,4 +103,19 @@ A canonical run uses `N_REPS=1000`. The extension stage reproduces:
 - the direct near-equal-score/different-profile criterion over 5 radii × 1,000 seeded landmark orderings;
 - Supplementary Tables S4-S5 and their construction-level source data.
 
-Current manuscript-facing frozen outputs are stored under `expected/manuscript_v0_25/`; historical `v1.0.0` expected outputs remain in place. The current manuscript source and figures remain outside the MIT software licence as documented in `LICENSE_SCOPE.md`.
+Frozen empirical outputs are stored under `expected/manuscript_v0_25/`; the directory name is retained deliberately because the evidence was frozen at v0.25. Release v1.1.1 aligns `manuscript/manuscript.tex` and the manuscript-facing figures with v0.26 without changing those numerical outputs. Historical `v1.0.0` expected outputs remain in place. The current manuscript source and figures remain outside the MIT software licence as documented in `LICENSE_SCOPE.md`.
+
+
+## Release v1.1.1 manuscript-source identity
+
+Repository release `v1.1.1` is aligned to manuscript `v0.26`.
+
+Exact SHA-256 for `manuscript/manuscript.tex`:
+
+```text
+dcc562028cae969d7538d0fbdbd9e6985c474ebbcb31a6741af82cea96c5ff79
+```
+
+The v0.26 revision changes figure readability, wording clarity and policy
+interpretation only. It does not alter the analytical input, canonical topology,
+reported numerical results, sensitivity results or supplementary empirical evidence.
